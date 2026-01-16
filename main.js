@@ -447,3 +447,66 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('mousedown', () => {
     document.body.classList.remove('keyboard-nav');
 });
+
+
+
+// arrow navigation
+
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+    });
+}
+
+/* --------------------
+   ARROW NAVIGATION
+-------------------- */
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+
+nextBtn?.addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+});
+
+prevBtn?.addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+});
+
+/* --------------------
+   SWIPE NAVIGATION
+-------------------- */
+let touchStartX = 0;
+let touchEndX = 0;
+
+const slider = document.querySelector(".slider-container");
+
+slider.addEventListener("touchstart", (e) => {
+    touchStartX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    const swipeDistance = touchStartX - touchEndX;
+
+    if (Math.abs(swipeDistance) < 50) return; // minimum swipe
+
+    if (swipeDistance > 0) {
+        // Swipe Left → Next
+        currentSlide = (currentSlide + 1) % slides.length;
+    } else {
+        // Swipe Right → Previous
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    }
+
+    showSlide(currentSlide);
+}
+
