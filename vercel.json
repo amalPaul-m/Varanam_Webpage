@@ -1,12 +1,6 @@
 {
   "rewrites": [
-    {
-      "source": "/valentine",
-      "destination": "https://valentine-s-spark.vercel.app"
-    },
-    {
-      "source": "/valentine/:path*",
-      "destination": "https://valentine-s-spark.vercel.app/:path*"
-    }
+    { "source": "/my-valentine", "destination": "https://valentine-five-kohl-68.vercel.app/" },
+    { "source": "/my-valentine/:path*", "destination": "https://valentine-five-kohl-68.vercel.app/:path*" }
   ]
 }
