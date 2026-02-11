@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/valentine",
+      "destination": "https://valentine-s-spark.vercel.app"
+    },
+    {
+      "source": "/valentine/:path*",
+      "destination": "https://valentine-s-spark.vercel.app/:path*"
+    }
+  ]
+}
