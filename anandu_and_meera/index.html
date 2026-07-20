@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" id="invitation-root">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anandu &amp; Meera | Wedding Invitation</title>
+  <meta name="description"
+    content="You are cordially invited to celebrate the sacred union of Anandu & Meera. Join us for a joyful Kerala wedding celebration.">
+  <meta property="og:title" content="Anandu & Meera | Wedding Invitation">
+  <meta property="og:image" content="assets/images/_ (2).jpeg">
+  <meta name="theme-color" content="#1C0A0A">
+  <link rel="stylesheet" href="style.css?v=3.2">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <!-- PARTICLES -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="dot-grid"></div>
+
+  <!-- FLOATING PETALS -->
+  <div class="petal" id="p1" style="left:8vw;animation-duration:9s,4s;animation-delay:0s,0s;">🌸</div>
+  <div class="petal" id="p2" style="left:22vw;animation-duration:12s,5s;animation-delay:1.5s,1s;">✿</div>
+  <div class="petal" id="p3" style="left:40vw;animation-duration:8s,3.5s;animation-delay:3s,0.5s;">🌺</div>
+  <div class="petal" id="p4" style="left:60vw;animation-duration:11s,4.5s;animation-delay:0.8s,2s;">🌸</div>
+  <div class="petal" id="p5" style="left:75vw;animation-duration:10s,5s;animation-delay:2s,1.5s;">✿</div>
+  <div class="petal" id="p6" style="left:88vw;animation-duration:13s,4s;animation-delay:4s,0.8s;">🌺</div>
+
+  <!-- AUDIO -->
+  <audio id="wedding-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" type="audio/mpeg">
+  </audio>
+
+
+
+  <!-- ═══════════════════════════════════
+     FLOATING UI
+════════════════════════════════════ -->
+  <div id="progress-bar"></div>
+
+
+
+  <button id="btn-top" title="Back to top"><i class="fas fa-chevron-up"></i></button>
+  <button id="music-ctrl" title="Toggle music"><i class="fas fa-music" id="music-icon"></i></button>
+
+  <!-- ═══════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+  <section id="hero">
+    <!-- Fullscreen video background -->
+    <video id="hero-video" autoplay muted loop playsinline>
+      <source src="assets/video/Video-531.mp4" type="video/mp4">
+    </video>
+    <!-- Dark gradient overlay -->
+    <div class="hero-overlay"></div>
+
+    <div class="hero-glow"></div>
+
+    <p class="hero-eyebrow">ॐ · Sree Ganeshay Namah · ॐ</p>
+
+    <h1 class="hero-names">
+      Anandu
+      <span class="hero-amp">&amp;</span>
+      Meera
+    </h1>
+
+    <div class="hero-date-box">
+      <span>August</span>
+      <span class="hero-date-day">30</span>
+      <span>2026</span>
+    </div>
+
+    <p class="hero-shloka">
+      "ॐ समञ्जन्तु विश्वेदेवाः समापो हृदयानि नौ।"<br>
+      <small style="font-size:0.75rem;letter-spacing:0.05em;">May divine forces unite our hearts in eternal
+        love.</small>
+    </p>
+
+    <div class="hero-scroll" onclick="document.getElementById('families').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     FAMILIES
+════════════════════════════════════ -->
+  <section id="families">
+    <div style="text-align:center">
+      <span class="section-label reveal">With Blessings Of</span>
+      <h2 class="section-title reveal">Our Families</h2>
+      <div class="section-line reveal"></div>
+    </div>
+
+    <div class="families-grid">
+
+      <div class="family-card reveal">
+        <div class="family-avatar">
+          <img src="assets/images/bride-groom/Gemini_Generated_Image_38en6m38en6m38en-removebg-preview.png" alt="Anandu (Groom)" class="avatar-img">
+        </div>
+        <div class="family-video-trigger" onclick="openVideoModal('assets/video/Video-531.mp4')">
+          <span class="play-btn-circle">
+            <i class="fas fa-play"></i>
+          </span>
+          <span class="play-btn-text">Watch Story</span>
+        </div>
+        <h3 class="family-head">Groom's Family</h3>
+        <p class="family-name">Sri. Rajan &amp; Smt. Radha</p>
+        <p class="family-desc">Parents of Anandu</p>
+        <span class="family-sep">&amp;</span>
+        <p class="family-name">Sri. Krishnan &amp; Smt. Saraswathi</p>
+        <p class="family-desc">Grand Parents</p>
+        <p class="family-desc" style="margin-top:0.6rem;font-style:italic">Sreevalsam, Thrissur</p>
+      </div>
+
+      <div class="family-card reveal">
+        <div class="family-avatar">
+          <img src="assets/images/bride-groom/Gemini_Generated_Image_bh6uasbh6uasbh6u-removebg-preview.png" alt="Meera (Bride)" class="avatar-img">
+        </div>
+        <div class="family-video-trigger" onclick="openVideoModal('assets/video/Video-531.mp4')">
+          <span class="play-btn-circle">
+            <i class="fas fa-play"></i>
+          </span>
+          <span class="play-btn-text">Watch Story</span>
+        </div>
+        <h3 class="family-head">Bride's Family</h3>
+        <p class="family-name">Sri. Harikumar &amp; Smt. Indira</p>
+        <p class="family-desc">Parents of Meera</p>
+        <span class="family-sep">&amp;</span>
+        <p class="family-name">Sri. Govindan &amp; Smt. Kamalam</p>
+        <p class="family-desc">Grand Parents</p>
+        <p class="family-desc" style="margin-top:0.6rem;font-style:italic">Aswathy House, Kottayam</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     COUNTDOWN
+════════════════════════════════════ -->
+  <section id="countdown">
+    <span class="section-label reveal">The Auspicious Day</span>
+    <h2 class="section-title reveal">Counting Down to Kalyanam</h2>
+    <div class="section-line reveal"></div>
+
+    <div class="countdown-grid reveal">
+      <div class="cd-box">
+        <span class="cd-num" id="cd-days">--</span>
+        <span class="cd-label">Days</span>
+      </div>
+      <div class="cd-box">
+        <span class="cd-num" id="cd-hours">--</span>
+        <span class="cd-label">Hours</span>
+      </div>
+      <div class="cd-box">
+        <span class="cd-num" id="cd-mins">--</span>
+        <span class="cd-label">Mins</span>
+      </div>
+      <div class="cd-box">
+        <span class="cd-num" id="cd-secs">--</span>
+        <span class="cd-label">Secs</span>
+      </div>
+    </div>
+
+    <!-- ADD TO CALENDAR -->
+    <div class="calendar-integration reveal">
+      <button class="calendar-btn" id="calendar-btn">
+        <i class="far fa-calendar-plus"></i> Add to Calendar
+      </button>
+      <div class="calendar-dropdown" id="calendar-dropdown">
+        <a href="#" id="cal-google" target="_blank" rel="noopener">
+          <i class="fab fa-google"></i> Google Calendar
+        </a>
+        <a href="#" id="cal-ics">
+          <i class="far fa-calendar-alt"></i> Apple / Outlook (.ics)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     DRESS CODE
+════════════════════════════════════ -->
+  <section id="dress-code">
+    <div style="text-align:center">
+      <span class="section-label reveal">What To Wear</span>
+      <h2 class="section-title reveal">Dress Code</h2>
+      <div class="section-line reveal"></div>
+    </div>
+
+    <div class="dress-code-grid">
+      <div class="dress-card reveal">
+        <div class="dress-card-bg" style="background-image: url('assets/images/dresscode/Gemini_Generated_Image_zh08jlzh08jlzh08.png');"></div>
+        <h3 class="dress-event">Wedding Eve</h3>
+        <p class="dress-desc">Colorful Costume</p>
+        <div class="dress-swatches">
+          <span class="swatch" style="background: #E8A87C"></span>
+          <span class="swatch" style="background: #C38D9E"></span>
+          <span class="swatch" style="background: #41B3A3"></span>
+        </div>
+      </div>
+
+      <div class="dress-card reveal">
+        <div class="dress-card-bg" style="background-image: url('assets/images/dresscode/Gemini_Generated_Image_qtm9ayqtm9ayqtm9.png');"></div>
+        <h3 class="dress-event">The Wedding</h3>
+        <p class="dress-desc">Light Shade Traditional</p>
+        <div class="dress-swatches">
+          <span class="swatch" style="background: #FDFBF7; border: 1px solid #E6DFD3;"></span>
+          <span class="swatch" style="background: #EEDC82"></span>
+          <span class="swatch" style="background: #F5E6CA"></span>
+        </div>
+      </div>
+
+      <div class="dress-card reveal">
+        <div class="dress-card-bg" style="background-image: url('assets/images/dresscode/Gemini_Generated_Image_kdifickdifickdif.png');"></div>
+        <h3 class="dress-event">The Reception</h3>
+        <p class="dress-desc">Black Shades</p>
+        <div class="dress-swatches">
+          <span class="swatch" style="background: #1A1A1A"></span>
+          <span class="swatch" style="background: #2D2D2D"></span>
+          <span class="swatch" style="background: #494949"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     EVENTS
+════════════════════════════════════ -->
+  <section id="events">
+    <div style="text-align:center">
+      <span class="section-label reveal">The Wedding Program</span>
+      <h2 class="section-title reveal">Sacred Events</h2>
+      <div class="section-line reveal"></div>
+    </div>
+
+    <div class="events-grid">
+
+      <div class="event-card reveal">
+        <div class="event-icon">🪔</div>
+        <div>
+          <span class="event-time">December 25 · 7:00 PM</span>
+          <h3 class="event-name">Nichayathartham</h3>
+          <p class="event-desc">Engagement ceremony with families gathering to celebrate the union. Traditional rituals,
+            exchange of gifts and blessings from elders.</p>
+        </div>
+      </div>
+
+      <div class="event-card reveal">
+        <div class="event-icon">🌸</div>
+        <div>
+          <span class="event-time">December 26 · 9:00 AM</span>
+          <h3 class="event-name">Guest Welcoming</h3>
+          <p class="event-desc">Reception of guests with traditional pookkalam, rose petals and refreshments. Music and
+            cultural performances to set the festive mood.</p>
+        </div>
+      </div>
+
+      <div class="event-card reveal">
+        <div class="event-icon">💫</div>
+        <div>
+          <span class="event-time">December 26 · 10:30 AM</span>
+          <h3 class="event-name">Muhurtham · Thalikettu</h3>
+          <p class="event-desc">The sacred moment — exchange of garlands and tying of the Thali at the auspicious hour.
+            Chanting of Vedic mantras by the priests.</p>
+        </div>
+      </div>
+
+      <div class="event-card reveal">
+        <div class="event-icon">🍃</div>
+        <div>
+          <span class="event-time">December 26 · 12:00 PM</span>
+          <h3 class="event-name">Kalyana Sadhya</h3>
+          <p class="event-desc">Traditional 28-item Kerala vegetarian feast served on fresh banana leaves. A feast
+            celebrating the joy of the occasion.</p>
+        </div>
+      </div>
+
+      <div class="event-card reveal">
+        <div class="event-icon">✨</div>
+        <div>
+          <span class="event-time">December 26 · 6:30 PM</span>
+          <h3 class="event-name">Grand Evening Reception</h3>
+          <p class="event-desc">Elegant evening reception with family, friends and dinner banquet. Celebrate the newly
+            wed couple with music and joy.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     GALLERY
+════════════════════════════════════ -->
+  <section id="gallery">
+    <div style="text-align:center">
+      <span class="section-label reveal">Our Story</span>
+      <h2 class="section-title reveal">Moments Together</h2>
+      <div class="section-line reveal"></div>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" onclick="openLB(0)">
+        <img src="assets/images/_ (2).jpeg" alt="Couple at beach — joyful dance">
+      </div>
+      <div class="gallery-item" onclick="openLB(1)">
+        <img src="assets/images/_ (3).jpeg" alt="Couple running together">
+      </div>
+      <div class="gallery-item" onclick="openLB(2)" style="grid-column:span 2">
+        <img src="assets/images/_ (4).jpeg" alt="Romantic hand-hold moment">
+      </div>
+      <div class="gallery-item" onclick="openLB(3)">
+        <img src="assets/images/_ (5).jpeg" alt="Couple arms wide open">
+      </div>
+      <div class="gallery-item" onclick="openLB(4)">
+        <img src="assets/images/_ (6).jpeg" alt="Couple reaching for each other">
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-label="Photo lightbox">
+    <button class="lb-close" onclick="closeLB()"><i class="fas fa-times"></i></button>
+    <button class="lb-prev" onclick="prevLB()"><i class="fas fa-chevron-left"></i></button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-next" onclick="nextLB()"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+  <!-- ═══════════════════════════════════
+     VENUE
+════════════════════════════════════ -->
+  <section id="venue">
+    <div style="text-align:center">
+      <span class="section-label reveal">How to reach us</span>
+      <h2 class="section-title reveal">The Venues</h2>
+      <div class="section-line reveal"></div>
+    </div>
+
+    <div class="venue-cards">
+
+      <div class="venue-card reveal">
+        <span class="venue-sub">🕌 Wedding Ceremony</span>
+        <h3 class="venue-name">Sri Krishna Temple Mandapam</h3>
+        <p class="venue-addr">Adjacent to Guruvayur Temple East Nada,<br>Guruvayur, Thrissur District, Kerala – 680101
+        </p>
+        <a class="venue-btn" href="https://maps.google.com?q=Guruvayur+Temple+Mandapam" target="_blank" rel="noopener">
+          <i class="fas fa-location-arrow"></i> Get Directions
+        </a>
+      </div>
+
+      <div class="venue-card reveal">
+        <span class="venue-sub">🎉 Evening Reception</span>
+        <h3 class="venue-name">Royal Pavilion Banquet Hall</h3>
+        <p class="venue-addr">Puzhakkal, Thrissur – Palakkad Highway,<br>Thrissur, Kerala – 680553 · Valet parking
+          available</p>
+        <a class="venue-btn" href="https://maps.google.com?q=Puzhakkal+Thrissur" target="_blank" rel="noopener">
+          <i class="fas fa-location-arrow"></i> Get Directions
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- ═══════════════════════════════════
+     BLESSINGS / WISHES
+════════════════════════════════════ -->
+  <section id="blessings">
+    <span class="section-label reveal">Leave Your Love</span>
+    <h2 class="section-title reveal">Send Your Blessings</h2>
+    <div class="section-line reveal"></div>
+
+    <div class="wish-form reveal">
+      <input type="text" id="wish-name" placeholder="Your Name" maxlength="60">
+      <textarea id="wish-text" rows="4" placeholder="Your blessings for the couple…" maxlength="280"></textarea>
+      <button class="submit-btn" onclick="submitWish()">
+        <i class="fas fa-paper-plane"></i>&nbsp; Send Blessings
+      </button>
+    </div>
+
+    <div class="wishes-list" id="wishes-list"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+  <footer id="footer">
+    <p class="footer-names">Anandu &amp; Meera</p>
+    <span class="footer-hashtag">#AnanduAndMeeraForever</span>
+    <p class="footer-tag" style="margin-top:1.5rem;">December 26, 2026 · Kerala</p>
+    <p class="footer-tag" style="margin-top:0.3rem;">With love &amp; gratitude</p>
+  </footer>
+
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="video-modal">
+    <div class="video-modal-close" onclick="closeVideoModal()">&times;</div>
+    <div class="video-modal-content">
+      <video id="modal-video-player" playsinline controls>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <script src="script.js?v=3.4"></script>
+</body>
+
+</html>
