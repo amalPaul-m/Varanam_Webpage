@@ -26,11 +26,12 @@ function showUI() {
   }, 700);
 }
 
-/* ── MUSIC ── */
+/* ── MUSIC AUTOPLAY ── */
 let musicPlaying = false;
 const audio = document.getElementById('wedding-music');
+
 if (audio) {
-  audio.volume = 0.45;
+  audio.volume = 0.5;
 
   const tryPlayMusic = () => {
     if (musicPlaying) return;
@@ -41,23 +42,27 @@ if (audio) {
         const icon = document.getElementById('music-icon');
         if (icon) icon.className = 'fas fa-pause';
         removeAutoPlayListeners();
-      }).catch(err => {
-        // Deferred until first touch/click/scroll interaction
+      }).catch(() => {
+        // Autoplay pending user gesture on strict mobile browser
       });
     }
   };
 
   const removeAutoPlayListeners = () => {
-    ['pointerdown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+    ['pointerdown', 'click', 'scroll', 'touchstart', 'touchend', 'mousemove'].forEach(evt => {
       window.removeEventListener(evt, tryPlayMusic, { capture: true });
     });
   };
 
-  // Try playing immediately on site load
+  // 1. Immediate play attempt on script parse
   tryPlayMusic();
 
-  // Play on first user interaction if browser autoplay policy deferred immediate play
-  ['pointerdown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+  // 2. Play attempt on DOMContentLoaded and full load
+  document.addEventListener('DOMContentLoaded', tryPlayMusic);
+  window.addEventListener('load', tryPlayMusic);
+
+  // 3. Play attempt on any user gesture if browser blocked immediate autoplay
+  ['pointerdown', 'click', 'scroll', 'touchstart', 'touchend', 'mousemove'].forEach(evt => {
     window.addEventListener(evt, tryPlayMusic, { capture: true, once: true, passive: true });
   });
 
