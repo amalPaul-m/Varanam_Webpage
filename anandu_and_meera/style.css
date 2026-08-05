@@ -388,7 +388,7 @@ section {
 ────────────────────────────────────── */
 #countdown {
     padding: 6rem 1.5rem;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785927612/jpeg-optimizer_SAI01855_lr5phi.webp');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto:good,w_900/v1785927612/jpeg-optimizer_SAI01855_lr5phi.webp');
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
@@ -803,7 +803,7 @@ section {
 ────────────────────────────────────── */
 #venue {
     padding: 6rem 1.5rem;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://res.cloudinary.com/ukslkqrn/image/upload/v1785927154/jpeg-optimizer_SAI01562_1_bztc2g.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto:good,w_900/v1785927154/jpeg-optimizer_SAI01562_1_bztc2g.jpg');
     background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
