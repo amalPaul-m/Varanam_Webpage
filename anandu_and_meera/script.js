@@ -140,11 +140,18 @@ function initReveal() {
   });
 }
 
-/* ── HERO PARALLAX (RAF Throttled) ── */
+/* ── HERO PARALLAX (Desktop only to prevent mobile scroll shake) ── */
 function initParallax() {
   const hero = document.getElementById('hero');
   const video = document.getElementById('hero-video');
   if (!hero || !video) return;
+
+  // Disable on mobile/touch to prevent jitter/shake during touch scrolling
+  const isTouchMobile = window.innerWidth <= 768 || !window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (isTouchMobile) {
+    video.style.transform = 'none';
+    return;
+  }
 
   let ticking = false;
   window.addEventListener('scroll', () => {

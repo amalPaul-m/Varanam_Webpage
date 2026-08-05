@@ -1838,6 +1838,14 @@ section {
     }
 }
 
+/* ── Mobile Touch Fix for Parallax Shake & Background Fixed Jitter ── */
+@media (max-width: 768px), (pointer: coarse) {
+    #countdown,
+    #venue {
+        background-attachment: scroll !important;
+    }
+}
+
 /* ── Dress Code Animations ── */
 .dress-card.reveal {
     opacity: 0;
