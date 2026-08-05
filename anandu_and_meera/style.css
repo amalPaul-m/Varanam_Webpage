@@ -618,7 +618,7 @@ section {
     padding: 1.2rem 1.8rem 0;
 }
 
-.event-card--featured > div:last-child {
+.event-card--featured>div:last-child {
     padding: 1.2rem 1.8rem 1.6rem;
 }
 
@@ -632,9 +632,11 @@ section {
     0% {
         transform: scale(1);
     }
+
     50% {
         transform: scale(1.10);
     }
+
     100% {
         transform: scale(1);
     }
@@ -1601,7 +1603,8 @@ section {
         height: 240px;
     }
 
-    #countdown, #venue {
+    #countdown,
+    #venue {
         background-size: cover;
     }
 }

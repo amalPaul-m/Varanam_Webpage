@@ -3,11 +3,10 @@
    Anandu & Meera
 ──────────────────────────────────── */
 
-/* ── AUTO INIT ── */
-/* ── AUTO INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   document.body.style.overflow = 'auto';
-  showUI();
+  initAutoplayMusic();
+  initMusicControls();
   startCountdown();
   loadWishes();
   initParticles();
@@ -17,67 +16,79 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypedName();
   initCalendar();
   initVideoModal();
+  initScrollAndGlobalListeners();
 });
 
-/* ── SHOW UI ── */
-function showUI() {
-  setTimeout(() => {
-    document.getElementById('music-ctrl').classList.add('visible');
-  }, 700);
+/* ── AUDIO PLAYBACK & AUTOPLAY ── */
+let musicPlaying = false;
+
+function getAudio() {
+  return document.getElementById('wedding-music');
 }
 
-/* ── MUSIC AUTOPLAY ── */
-let musicPlaying = false;
-const audio = document.getElementById('wedding-music');
+function initAutoplayMusic() {
+  const audio = getAudio();
+  if (!audio) return;
 
-if (audio) {
   audio.volume = 0.5;
 
-  const tryPlayMusic = () => {
+  const tryPlay = () => {
     if (musicPlaying) return;
-    const promise = audio.play();
-    if (promise !== undefined) {
-      promise.then(() => {
-        musicPlaying = true;
-        const icon = document.getElementById('music-icon');
-        if (icon) icon.className = 'fas fa-pause';
-        removeAutoPlayListeners();
-      }).catch(() => {
-        // Autoplay pending user gesture on strict mobile browser
-      });
-    }
-  };
-
-  const removeAutoPlayListeners = () => {
-    ['pointerdown', 'click', 'scroll', 'touchstart', 'touchend', 'mousemove'].forEach(evt => {
-      window.removeEventListener(evt, tryPlayMusic, { capture: true });
+    const aud = getAudio();
+    if (!aud) return;
+    aud.play().then(() => {
+      musicPlaying = true;
+      const icon = document.getElementById('music-icon');
+      if (icon) icon.className = 'fas fa-pause';
+      removeListeners();
+    }).catch(() => {
+      // Autoplay blocked by browser policy — will start on first user interaction
     });
   };
 
-  // 1. Immediate play attempt on script parse
-  tryPlayMusic();
+  const onUserInteract = () => {
+    tryPlay();
+  };
 
-  // 2. Play attempt on DOMContentLoaded and full load
-  document.addEventListener('DOMContentLoaded', tryPlayMusic);
-  window.addEventListener('load', tryPlayMusic);
+  const removeListeners = () => {
+    window.removeEventListener('click', onUserInteract);
+    window.removeEventListener('touchstart', onUserInteract);
+    window.removeEventListener('pointerdown', onUserInteract);
+    window.removeEventListener('keydown', onUserInteract);
+    window.removeEventListener('scroll', onUserInteract);
+  };
 
-  // 3. Play attempt on any user gesture if browser blocked immediate autoplay
-  ['pointerdown', 'click', 'scroll', 'touchstart', 'touchend', 'mousemove'].forEach(evt => {
-    window.addEventListener(evt, tryPlayMusic, { capture: true, once: true, passive: true });
-  });
+  // Try playing immediately
+  tryPlay();
+  window.addEventListener('load', tryPlay);
 
+  // Fallback: start music on very first user interaction anywhere on the page
+  window.addEventListener('click', onUserInteract, { once: true });
+  window.addEventListener('touchstart', onUserInteract, { once: true });
+  window.addEventListener('pointerdown', onUserInteract, { once: true });
+  window.addEventListener('keydown', onUserInteract, { once: true });
+  window.addEventListener('scroll', onUserInteract, { once: true });
+}
+
+/* ── MUSIC CONTROLS ── */
+function initMusicControls() {
   const musicBtn = document.getElementById('music-ctrl');
   if (musicBtn) {
+    musicBtn.classList.add('visible');
     musicBtn.addEventListener('click', (e) => {
       e.stopPropagation();
+      const audio = getAudio();
+      if (!audio) return;
       if (musicPlaying) {
         audio.pause();
         musicPlaying = false;
-        document.getElementById('music-icon').className = 'fas fa-music';
+        const icon = document.getElementById('music-icon');
+        if (icon) icon.className = 'fas fa-music';
       } else {
         audio.play().then(() => {
           musicPlaying = true;
-          document.getElementById('music-icon').className = 'fas fa-pause';
+          const icon = document.getElementById('music-icon');
+          if (icon) icon.className = 'fas fa-pause';
         }).catch(() => {});
       }
     });
@@ -107,6 +118,11 @@ function startCountdown() {
   const target = new Date('2026-08-30T08:40:00+05:30').getTime();
   const ids = ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'];
 
+  function doc(id, v) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v;
+  }
+
   function tick() {
     const diff = target - Date.now();
     if (diff <= 0) { ids.forEach(id => doc(id, '00')); return; }
@@ -129,40 +145,47 @@ function startCountdown() {
     });
   }
 
-  function doc(id, v) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = v;
-  }
-
   tick();
   setInterval(tick, 1000);
 }
 
-/* ── SCROLL EFFECTS (RAF Throttled for 60fps) ── */
-let scrollTicking = false;
-window.addEventListener('scroll', () => {
-  if (!scrollTicking) {
-    requestAnimationFrame(() => {
-      const sy = window.scrollY;
-      const docH = document.documentElement.scrollHeight - window.innerHeight;
+/* ── SCROLL EFFECTS & GLOBAL LISTENERS ── */
+function initScrollAndGlobalListeners() {
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      requestAnimationFrame(() => {
+        const sy = window.scrollY;
+        const docH = document.documentElement.scrollHeight - window.innerHeight;
 
-      // progress bar
-      const pBar = document.getElementById('progress-bar');
-      if (pBar) pBar.style.width = (sy / Math.max(docH, 1) * 100) + '%';
+        // progress bar
+        const pBar = document.getElementById('progress-bar');
+        if (pBar) pBar.style.width = (sy / Math.max(docH, 1) * 100) + '%';
 
-      // back-to-top
-      const top = document.getElementById('btn-top');
-      if (top) sy > 400 ? top.classList.add('visible') : top.classList.remove('visible');
+        // back-to-top
+        const top = document.getElementById('btn-top');
+        if (top) sy > 400 ? top.classList.add('visible') : top.classList.remove('visible');
 
-      scrollTicking = false;
-    });
-    scrollTicking = true;
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
+
+  const btnTop = document.getElementById('btn-top');
+  if (btnTop) {
+    btnTop.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
   }
-}, { passive: true });
 
-document.getElementById('btn-top').addEventListener('click', () =>
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-);
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLB();
+    });
+  }
+}
 
 /* ── INTERSECTION OBSERVER REVEAL ── */
 function initReveal() {
@@ -253,6 +276,7 @@ function openLB(i) {
   lbIndex = i;
   const lb = document.getElementById('lightbox');
   const img = document.getElementById('lb-img');
+  if (!lb || !img) return;
   img.style.opacity = '0';
   img.src = lbImages[i].src;
   img.alt = lbImages[i].alt;
@@ -261,12 +285,14 @@ function openLB(i) {
   img.onload = () => { img.style.transition = 'opacity 0.4s'; img.style.opacity = '1'; };
 }
 function closeLB() {
-  document.getElementById('lightbox').classList.remove('open');
+  const lb = document.getElementById('lightbox');
+  if (lb) lb.classList.remove('open');
   document.body.style.overflow = 'auto';
 }
 function changeLB(dir) {
   lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
   const img = document.getElementById('lb-img');
+  if (!img) return;
   img.style.opacity = '0';
   setTimeout(() => {
     img.src = lbImages[lbIndex].src;
@@ -279,13 +305,10 @@ function nextLB() { changeLB(1); }
 
 document.addEventListener('keydown', e => {
   const lb = document.getElementById('lightbox');
-  if (!lb.classList.contains('open')) return;
+  if (!lb || !lb.classList.contains('open')) return;
   if (e.key === 'ArrowLeft') prevLB();
   if (e.key === 'ArrowRight') nextLB();
   if (e.key === 'Escape') closeLB();
-});
-document.getElementById('lightbox').addEventListener('click', e => {
-  if (e.target === document.getElementById('lightbox')) closeLB();
 });
 
 /* ── WISHES (Google Apps Script & Google Sheet Integration) ── */
@@ -297,7 +320,7 @@ let currentWishes = [];
 
 async function loadWishes() {
   const list = document.getElementById('wishes-list');
-  
+
   // 1. Immediately render local cached blessings (0ms visual load time)
   currentWishes = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
   if (currentWishes.length > 0) {
@@ -349,14 +372,17 @@ async function loadWishes() {
 async function submitWish() {
   const nameInput = document.getElementById('wish-name');
   const textInput = document.getElementById('wish-text');
+  if (!nameInput || !textInput) return;
   const name = nameInput.value.trim();
   const text = textInput.value.trim();
 
   if (!name || !text) { shake(document.querySelector('.wish-form')); return; }
 
   const submitBtn = document.querySelector('.submit-btn');
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sending…';
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sending…';
+  }
 
   const date = new Date().toLocaleDateString('en-IN');
   const newWish = { name, text, time: date };
@@ -391,14 +417,14 @@ async function submitWish() {
 
   nameInput.value = '';
   textInput.value = '';
-  submitBtn.disabled = false;
-  submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>&nbsp; Send Blessings';
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i>&nbsp; Send Blessings';
+  }
 
   confettiBurst();
   showToast('💌 Your blessings have been sent!');
 }
-
-
 
 function renderWishes(wishes) {
   const list = document.getElementById('wishes-list');
@@ -418,7 +444,7 @@ function renderWishes(wishes) {
 }
 
 function esc(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
 function showToast(message) {
@@ -468,7 +494,7 @@ function initParticles() {
   const ctx = canvas.getContext('2d');
   let W, H, pts = [];
 
-  function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize, { passive: true });
 
@@ -548,7 +574,7 @@ document.head.appendChild(styleTag);
 /* ── INITIAL REVEAL CHECK ── */
 window.addEventListener('load', () => {
   document.querySelectorAll('.reveal').forEach(el => {
-    if (el.getBoundingClientRect().top < innerHeight - 60)
+    if (el.getBoundingClientRect().top < window.innerHeight - 60)
       el.classList.add('in');
   });
 });
@@ -639,14 +665,16 @@ function initVideoModal() {
 function openVideoModal(src) {
   const modal = document.getElementById('video-modal');
   const player = document.getElementById('modal-video-player');
+  const audio = getAudio();
   if (!modal || !player) return;
 
   // Pause ambient music if playing
-  if (musicPlaying) {
+  if (musicPlaying && audio) {
     wasMusicPlayingBeforeVideo = true;
     audio.pause();
     musicPlaying = false;
-    document.getElementById('music-icon').className = 'fas fa-music';
+    const icon = document.getElementById('music-icon');
+    if (icon) icon.className = 'fas fa-music';
   } else {
     wasMusicPlayingBeforeVideo = false;
   }
@@ -668,6 +696,7 @@ function openVideoModal(src) {
 function closeVideoModal() {
   const modal = document.getElementById('video-modal');
   const player = document.getElementById('modal-video-player');
+  const audio = getAudio();
   if (!modal || !player) return;
 
   player.pause();
@@ -679,10 +708,10 @@ function closeVideoModal() {
   }, 400);
 
   // Resume music if it was playing previously
-  if (wasMusicPlayingBeforeVideo) {
+  if (wasMusicPlayingBeforeVideo && audio) {
     audio.play().catch(() => { });
     musicPlaying = true;
-    document.getElementById('music-icon').className = 'fas fa-pause';
+    const icon = document.getElementById('music-icon');
+    if (icon) icon.className = 'fas fa-pause';
   }
 }
-
