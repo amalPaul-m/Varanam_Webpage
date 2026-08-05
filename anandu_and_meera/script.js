@@ -140,32 +140,29 @@ function initReveal() {
   });
 }
 
-/* ── HERO PARALLAX (Desktop only to prevent mobile scroll shake) ── */
+/* ── HERO PARALLAX (GPU Hardware Accelerated & RAF Throttled) ── */
 function initParallax() {
   const hero = document.getElementById('hero');
   const video = document.getElementById('hero-video');
   if (!hero || !video) return;
 
-  // Disable on mobile/touch to prevent jitter/shake during touch scrolling
-  const isTouchMobile = window.innerWidth <= 768 || !window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (isTouchMobile) {
-    video.style.transform = 'none';
-    return;
+  let ticking = false;
+  function updateParallax() {
+    const sy = window.scrollY;
+    if (sy <= window.innerHeight) {
+      video.style.transform = `translate3d(0, ${(sy * 0.35).toFixed(2)}px, 0)`;
+    }
+    ticking = false;
   }
 
-  let ticking = false;
   window.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(() => {
-        const sy = window.scrollY;
-        if (sy < window.innerHeight) {
-          video.style.transform = `translate3d(0, ${sy * 0.35}px, 0)`;
-        }
-        ticking = false;
-      });
+      requestAnimationFrame(updateParallax);
       ticking = true;
     }
   }, { passive: true });
+
+  updateParallax();
 }
 
 /* ── MAGNETIC HOVER (Mouse/Desktop only) ── */

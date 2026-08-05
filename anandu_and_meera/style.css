@@ -214,6 +214,8 @@ section {
     object-fit: cover;
     z-index: 0;
     pointer-events: none;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 /* Charcoal gradient overlay on top of video */
@@ -1835,14 +1837,6 @@ section {
         grid-template-columns: 1fr;
         gap: 1.5rem;
         padding: 0 1rem;
-    }
-}
-
-/* ── Mobile Touch Fix for Parallax Shake & Background Fixed Jitter ── */
-@media (max-width: 768px), (pointer: coarse) {
-    #countdown,
-    #venue {
-        background-attachment: scroll !important;
     }
 }
 
