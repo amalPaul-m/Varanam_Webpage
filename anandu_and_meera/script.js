@@ -29,19 +29,55 @@ function showUI() {
 /* ── MUSIC ── */
 let musicPlaying = false;
 const audio = document.getElementById('wedding-music');
-audio.volume = 0.4;
+if (audio) {
+  audio.volume = 0.45;
 
-document.getElementById('music-ctrl').addEventListener('click', () => {
-  if (musicPlaying) {
-    audio.pause();
-    musicPlaying = false;
-    document.getElementById('music-icon').className = 'fas fa-music';
-  } else {
-    audio.play().catch(() => { });
-    musicPlaying = true;
-    document.getElementById('music-icon').className = 'fas fa-pause';
+  const tryPlayMusic = () => {
+    if (musicPlaying) return;
+    const promise = audio.play();
+    if (promise !== undefined) {
+      promise.then(() => {
+        musicPlaying = true;
+        const icon = document.getElementById('music-icon');
+        if (icon) icon.className = 'fas fa-pause';
+        removeAutoPlayListeners();
+      }).catch(err => {
+        // Deferred until first touch/click/scroll interaction
+      });
+    }
+  };
+
+  const removeAutoPlayListeners = () => {
+    ['pointerdown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+      window.removeEventListener(evt, tryPlayMusic, { capture: true });
+    });
+  };
+
+  // Try playing immediately on site load
+  tryPlayMusic();
+
+  // Play on first user interaction if browser autoplay policy deferred immediate play
+  ['pointerdown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+    window.addEventListener(evt, tryPlayMusic, { capture: true, once: true, passive: true });
+  });
+
+  const musicBtn = document.getElementById('music-ctrl');
+  if (musicBtn) {
+    musicBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (musicPlaying) {
+        audio.pause();
+        musicPlaying = false;
+        document.getElementById('music-icon').className = 'fas fa-music';
+      } else {
+        audio.play().then(() => {
+          musicPlaying = true;
+          document.getElementById('music-icon').className = 'fas fa-pause';
+        }).catch(() => {});
+      }
+    });
   }
-});
+}
 
 /* ── TYPED HERO NAME ── */
 function initTypedName() {
