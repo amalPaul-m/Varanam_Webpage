@@ -603,7 +603,7 @@ function initCalendar() {
   const title = "Anandu & Meera's Wedding";
   const desc = "You are invited to celebrate the union of Anandu & Meera.\n\nMuhurtham: 8:40 AM – 9:20 AM at Airapuram Bhagavathy Temple Auditorium, Airapuram.\n\nEvening Reception: 6:00 PM onwards at Rotary Club, Iringole, Perumbavoor.";
   const loc = "Airapuram Bhagavathy Temple Auditorium, Airapuram, Ernakulam, Kerala";
-  const start = "20260830T031000Z";
+  const start = "20260830T003000Z";
   const end = "20260830T163000Z";
 
   // Google Calendar Link
