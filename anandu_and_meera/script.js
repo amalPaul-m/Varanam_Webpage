@@ -4,6 +4,7 @@
 ──────────────────────────────────── */
 
 /* ── AUTO INIT ── */
+/* ── AUTO INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   document.body.style.overflow = 'auto';
   showUI();
@@ -13,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initParallax();
   initMagneticHover();
-  initPetalLoop();
   initTypedName();
   initCalendar();
   initVideoModal();
@@ -97,18 +97,26 @@ function startCountdown() {
   setInterval(tick, 1000);
 }
 
-/* ── SCROLL EFFECTS ── */
+/* ── SCROLL EFFECTS (RAF Throttled for 60fps) ── */
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  const sy = window.scrollY;
-  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  if (!scrollTicking) {
+    requestAnimationFrame(() => {
+      const sy = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
 
-  // progress bar
-  document.getElementById('progress-bar').style.width = (sy / docH * 100) + '%';
+      // progress bar
+      const pBar = document.getElementById('progress-bar');
+      if (pBar) pBar.style.width = (sy / Math.max(docH, 1) * 100) + '%';
 
-  // back-to-top
-  const top = document.getElementById('btn-top');
-  sy > 400 ? top.classList.add('visible') : top.classList.remove('visible');
+      // back-to-top
+      const top = document.getElementById('btn-top');
+      if (top) sy > 400 ? top.classList.add('visible') : top.classList.remove('visible');
 
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
 }, { passive: true });
 
 document.getElementById('btn-top').addEventListener('click', () =>
@@ -132,22 +140,31 @@ function initReveal() {
   });
 }
 
-/* ── HERO PARALLAX ── */
+/* ── HERO PARALLAX (RAF Throttled) ── */
 function initParallax() {
   const hero = document.getElementById('hero');
   const video = document.getElementById('hero-video');
   if (!hero || !video) return;
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    const sy = window.scrollY;
-    if (sy < window.innerHeight) {
-      video.style.transform = `translateY(${sy * 0.35}px)`;
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const sy = window.scrollY;
+        if (sy < window.innerHeight) {
+          video.style.transform = `translate3d(0, ${sy * 0.35}px, 0)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   }, { passive: true });
 }
 
-/* ── MAGNETIC HOVER ── */
+/* ── MAGNETIC HOVER (Mouse/Desktop only) ── */
 function initMagneticHover() {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
   const targets = document.querySelectorAll(
     '.event-card, .venue-card, .cd-box, .family-card'
   );
@@ -169,41 +186,21 @@ function initMagneticHover() {
   });
 }
 
-/* ── PETAL RECYCLER ── */
-function initPetalLoop() {
-  document.querySelectorAll('.petal').forEach(p => {
-    const checkLoop = () => {
-      const rect = p.getBoundingClientRect();
-      if (rect.top > window.innerHeight + 20) {
-        const [fallDur, swayDur] = (p.style.animationDuration || '10s,4s').split(',');
-        const [fallDel, swayDel] = (p.style.animationDelay || '0s,0s').split(',');
-        p.style.animationDuration = fallDur + ',' + swayDur;
-        p.style.animationDelay = '0s,0s';
-        // reset by toggling display
-        p.style.display = 'none';
-        p.offsetHeight;
-        p.style.display = '';
-      }
-    };
-    setInterval(checkLoop, 2000);
-  });
-}
-
 /* ── LIGHTBOX ── */
 const lbImages = [
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918014/jpeg-optimizer_SAI01532_eaehn8.jpg', alt: 'Couple moment 1' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01502_zqonkl.jpg', alt: 'Couple moment 2' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01491_pvkcfu.jpg', alt: 'Couple moment 3' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01442_gqqdk4.jpg', alt: 'Couple moment 4' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918003/jpeg-optimizer_SAI01809_xfhgtz.jpg', alt: 'Couple moment 5' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918003/jpeg-optimizer_SAI01771_zgj23k.jpg', alt: 'Couple moment 6' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01807_twqctd.jpg', alt: 'Couple moment 7' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01744_d52d2w.jpg', alt: 'Couple moment 8' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01747_d4cstg.jpg', alt: 'Couple moment 9' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01701_kui2sr.jpg', alt: 'Couple moment 10' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785928295/jpeg-optimizer_SAI01646_ogp0ew.jpg', alt: 'Couple moment 11' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785928294/jpeg-optimizer_SAI01636_o9eth3.jpg', alt: 'Couple moment 12' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785917861/jpeg-optimizer_SAI01415_dzip9b.jpg', alt: 'Couple moment 13' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918014/jpeg-optimizer_SAI01532_eaehn8.jpg', alt: 'Couple moment 1' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918013/jpeg-optimizer_SAI01502_zqonkl.jpg', alt: 'Couple moment 2' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918013/jpeg-optimizer_SAI01491_pvkcfu.jpg', alt: 'Couple moment 3' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918013/jpeg-optimizer_SAI01442_gqqdk4.jpg', alt: 'Couple moment 4' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918003/jpeg-optimizer_SAI01809_xfhgtz.jpg', alt: 'Couple moment 5' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918003/jpeg-optimizer_SAI01771_zgj23k.jpg', alt: 'Couple moment 6' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01807_twqctd.jpg', alt: 'Couple moment 7' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01744_d52d2w.jpg', alt: 'Couple moment 8' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01747_d4cstg.jpg', alt: 'Couple moment 9' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01701_kui2sr.jpg', alt: 'Couple moment 10' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785928295/jpeg-optimizer_SAI01646_ogp0ew.jpg', alt: 'Couple moment 11' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785928294/jpeg-optimizer_SAI01636_o9eth3.jpg', alt: 'Couple moment 12' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785917861/jpeg-optimizer_SAI01415_dzip9b.jpg', alt: 'Couple moment 13' },
 ];
 let lbIndex = 0;
 
@@ -255,8 +252,16 @@ let currentWishes = [];
 
 async function loadWishes() {
   const list = document.getElementById('wishes-list');
-  list.innerHTML = '<div style="text-align:center;padding:2rem;font-family:Outfit,sans-serif;color:var(--text-mid);opacity:0.8;"><i class="fas fa-spinner fa-spin"></i> Loading blessings...</div>';
+  
+  // 1. Immediately render local cached blessings (0ms visual load time)
+  currentWishes = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
+  if (currentWishes.length > 0) {
+    renderWishes(currentWishes);
+  } else if (list) {
+    list.innerHTML = '<div style="text-align:center;padding:2rem;font-family:Outfit,sans-serif;color:var(--text-mid);opacity:0.8;"><i class="fas fa-spinner fa-spin"></i> Loading blessings...</div>';
+  }
 
+  // 2. Fetch latest blessings from Google Sheet in background
   try {
     const res = await fetch(GOOGLE_SHEET_JSON_URL + '&_t=' + Date.now());
     const raw = await res.text();
@@ -289,8 +294,10 @@ async function loadWishes() {
     renderWishes(currentWishes);
   } catch (err) {
     console.warn('Google Sheet fetch failed, displaying local blessings:', err);
-    currentWishes = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
-    renderWishes(currentWishes);
+    if (!currentWishes.length) {
+      currentWishes = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
+      renderWishes(currentWishes);
+    }
   }
 }
 
@@ -350,6 +357,7 @@ async function submitWish() {
 
 function renderWishes(wishes) {
   const list = document.getElementById('wishes-list');
+  if (!list) return;
   if (!wishes.length) {
     list.innerHTML = '<p style="text-align:center;font-family:Outfit,sans-serif;color:var(--text-mid);opacity:0.6;margin-top:2rem;">Be the first to leave a blessing! 🙏</p>';
     return;
@@ -382,6 +390,7 @@ function showToast(message) {
 }
 
 function shake(el) {
+  if (!el) return;
   el.style.animation = 'none';
   el.offsetHeight;
   el.style.animation = 'shake 0.4s ease';
@@ -443,16 +452,18 @@ function initParticles() {
     }
   }
 
-  for (let i = 0; i < 90; i++) pts.push(new Dot());
+  const count = W < 768 ? 40 : 65;
+  for (let i = 0; i < count; i++) pts.push(new Dot());
 
   function connect() {
+    const maxDist = 75;
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
         const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
         const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < 90) {
+        if (d < maxDist) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(73,73,73,${0.04 * (1 - d / 90)})`;
+          ctx.strokeStyle = `rgba(73,73,73,${0.04 * (1 - d / maxDist)})`;
           ctx.lineWidth = 0.4;
           ctx.moveTo(pts[i].x, pts[i].y);
           ctx.lineTo(pts[j].x, pts[j].y);
