@@ -10,7 +10,7 @@
   <meta property="og:title" content="Anandu & Meera | Wedding Invitation">
   <meta property="og:image" content="assets/images/_ (2).jpeg">
   <meta name="theme-color" content="#1C0A0A">
-  <link rel="stylesheet" href="/anandu_and_meera/style.css">
+  <link rel="stylesheet" href="style.css?v=3.2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -28,9 +28,12 @@
   <div class="petal" id="p5" style="left:75vw;animation-duration:10s,5s;animation-delay:2s,1.5s;">✿</div>
   <div class="petal" id="p6" style="left:88vw;animation-duration:13s,4s;animation-delay:4s,0.8s;">🌺</div>
 
-  <!-- AUDIO -->
-  <audio id="wedding-music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3" type="audio/mpeg">
+  <!-- AUDIO (Festive Wedding Instrumental) -->
+  <audio id="wedding-music" loop preload="auto">
+    <source
+      src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=indian-wedding-festive-flute-and-shehnai-112521.mp3"
+      type="audio/mpeg">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
 
 
@@ -51,14 +54,14 @@
   <section id="hero">
     <!-- Fullscreen video background -->
     <video id="hero-video" autoplay muted loop playsinline>
-      <source src="/anandu_and_meera/assets/video/Video-531.mp4" type="video/mp4">
+      <source src="https://res.cloudinary.com/ukslkqrn/video/upload/v1785943660/Video-531_dyatvj.mp4" type="video/mp4">
     </video>
     <!-- Dark gradient overlay -->
     <div class="hero-overlay"></div>
 
     <div class="hero-glow"></div>
 
-    <p class="hero-eyebrow">ॐ · Sree Ganeshay Namah · ॐ</p>
+    <p class="hero-eyebrow">Welcome . to . the . world . of</p>
 
     <h1 class="hero-names">
       Anandu
@@ -73,9 +76,9 @@
     </div>
 
     <p class="hero-shloka">
-      "ॐ समञ्जन्तु विश्वेदेवाः समापो हृदयानि नौ।"<br>
-      <small style="font-size:0.75rem;letter-spacing:0.05em;">May divine forces unite our hearts in eternal
-        love.</small>
+      "ചിങ്ങത്തിൽ താലികെട്ട്"<br>
+      <small style="font-size:0.75rem;letter-spacing:0.05em;">Two hearts, one soul, one beautiful journey
+        forever.</small>
     </p>
 
     <div class="hero-scroll" onclick="document.getElementById('families').scrollIntoView({behavior:'smooth'})">
@@ -98,40 +101,26 @@
 
       <div class="family-card reveal">
         <div class="family-avatar">
-          <img src="/anandu_and_meera/assets/images/bride-groom/Gemini_Generated_Image_38en6m38en6m38en-removebg-preview.png" alt="Anandu (Groom)" class="avatar-img">
+          <img src="assets/images/bride-groom/Gemini_Generated_Image_38en6m38en6m38en-removebg-preview.png"
+            alt="Anandu (Groom)" class="avatar-img">
         </div>
-        <div class="family-video-trigger" onclick="openVideoModal('/anandu_and_meera/assets/video/Video-531.mp4')">
-          <span class="play-btn-circle">
-            <i class="fas fa-play"></i>
-          </span>
-          <span class="play-btn-text">Watch Story</span>
-        </div>
+
         <h3 class="family-head">Groom's Family</h3>
-        <p class="family-name">Sri. Rajan &amp; Smt. Radha</p>
+        <p class="family-name">Sri. Saju P.R. &amp; Smt. Sreeja Saju</p>
         <p class="family-desc">Parents of Anandu</p>
-        <span class="family-sep">&amp;</span>
-        <p class="family-name">Sri. Krishnan &amp; Smt. Saraswathi</p>
-        <p class="family-desc">Grand Parents</p>
-        <p class="family-desc" style="margin-top:0.6rem;font-style:italic">Sreevalsam, Thrissur</p>
+        <p class="family-desc" style="margin-top:0.6rem;font-style:italic">Parambi House, Iringole, Perumbavoor</p>
       </div>
 
       <div class="family-card reveal">
         <div class="family-avatar">
-          <img src="/anandu_and_meera/assets/images/bride-groom/Gemini_Generated_Image_bh6uasbh6uasbh6u-removebg-preview.png" alt="Meera (Bride)" class="avatar-img">
+          <img src="assets/images/bride-groom/Gemini_Generated_Image_bh6uasbh6uasbh6u-removebg-preview.png"
+            alt="Meera (Bride)" class="avatar-img">
         </div>
-        <div class="family-video-trigger" onclick="openVideoModal('/anandu_and_meera/assets/video/Video-531.mp4')">
-          <span class="play-btn-circle">
-            <i class="fas fa-play"></i>
-          </span>
-          <span class="play-btn-text">Watch Story</span>
-        </div>
+
         <h3 class="family-head">Bride's Family</h3>
-        <p class="family-name">Sri. Harikumar &amp; Smt. Indira</p>
+        <p class="family-name">Sri. Mohan &amp; Smt. Latha Mohan</p>
         <p class="family-desc">Parents of Meera</p>
-        <span class="family-sep">&amp;</span>
-        <p class="family-name">Sri. Govindan &amp; Smt. Kamalam</p>
-        <p class="family-desc">Grand Parents</p>
-        <p class="family-desc" style="margin-top:0.6rem;font-style:italic">Aswathy House, Kottayam</p>
+        <p class="family-desc" style="margin-top:0.6rem;font-style:italic">Vaniyamkottuthadathil House, Pattimattom</p>
       </div>
 
     </div>
@@ -174,7 +163,7 @@
           <i class="fab fa-google"></i> Google Calendar
         </a>
         <a href="#" id="cal-ics">
-          <i class="far fa-calendar-alt"></i> Apple / Outlook (.ics)
+          <i class="far fa-calendar-alt"></i> Apple
         </a>
       </div>
     </div>
@@ -183,7 +172,7 @@
   <!-- ═══════════════════════════════════
      DRESS CODE
 ════════════════════════════════════ -->
-  <section id="dress-code">
+  <!-- <section id="dress-code">
     <div style="text-align:center">
       <span class="section-label reveal">What To Wear</span>
       <h2 class="section-title reveal">Dress Code</h2>
@@ -192,7 +181,8 @@
 
     <div class="dress-code-grid">
       <div class="dress-card reveal">
-        <div class="dress-card-bg" style="background-image: url('/anandu_and_meera/assets/images/dresscode/Gemini_Generated_Image_zh08jlzh08jlzh08.png');"></div>
+        <div class="dress-card-bg"
+          style="background-image: url('assets/images/dresscode/Gemini_Generated_Image_zh08jlzh08jlzh08.png');"></div>
         <h3 class="dress-event">Wedding Eve</h3>
         <p class="dress-desc">Colorful Costume</p>
         <div class="dress-swatches">
@@ -203,7 +193,8 @@
       </div>
 
       <div class="dress-card reveal">
-        <div class="dress-card-bg" style="background-image: url('/anandu_and_meera/assets/images/dresscode/Gemini_Generated_Image_qtm9ayqtm9ayqtm9.png');"></div>
+        <div class="dress-card-bg"
+          style="background-image: url('assets/images/dresscode/Gemini_Generated_Image_qtm9ayqtm9ayqtm9.png');"></div>
         <h3 class="dress-event">The Wedding</h3>
         <p class="dress-desc">Light Shade Traditional</p>
         <div class="dress-swatches">
@@ -214,7 +205,8 @@
       </div>
 
       <div class="dress-card reveal">
-        <div class="dress-card-bg" style="background-image: url('/anandu_and_meera/assets/images/dresscode/Gemini_Generated_Image_kdifickdifickdif.png');"></div>
+        <div class="dress-card-bg"
+          style="background-image: url('assets/images/dresscode/Gemini_Generated_Image_kdifickdifickdif.png');"></div>
         <h3 class="dress-event">The Reception</h3>
         <p class="dress-desc">Black Shades</p>
         <div class="dress-swatches">
@@ -224,7 +216,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ═══════════════════════════════════
      EVENTS
@@ -238,53 +230,31 @@
 
     <div class="events-grid">
 
-      <div class="event-card reveal">
-        <div class="event-icon">🪔</div>
-        <div>
-          <span class="event-time">December 25 · 7:00 PM</span>
-          <h3 class="event-name">Nichayathartham</h3>
-          <p class="event-desc">Engagement ceremony with families gathering to celebrate the union. Traditional rituals,
-            exchange of gifts and blessings from elders.</p>
+      <div class="event-card event-card--featured reveal">
+        <div class="event-card-banner">
+          <img
+            src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785923628/jpeg-optimizer_Gemini_Generated_Image_5mvz6j5mvz6j5mvz_bgsdtb.png"
+            alt="Muhurtham — Anandu & Meera" loading="lazy">
         </div>
-      </div>
-
-      <div class="event-card reveal">
-        <div class="event-icon">🌸</div>
         <div>
-          <span class="event-time">December 26 · 9:00 AM</span>
-          <h3 class="event-name">Guest Welcoming</h3>
-          <p class="event-desc">Reception of guests with traditional pookkalam, rose petals and refreshments. Music and
-            cultural performances to set the festive mood.</p>
-        </div>
-      </div>
-
-      <div class="event-card reveal">
-        <div class="event-icon">💫</div>
-        <div>
-          <span class="event-time">December 26 · 10:30 AM</span>
+          <span class="event-time">August 30 · 8:40 AM – 9:20 AM</span>
           <h3 class="event-name">Muhurtham · Thalikettu</h3>
           <p class="event-desc">The sacred moment — exchange of garlands and tying of the Thali at the auspicious hour.
-            Chanting of Vedic mantras by the priests.</p>
+            Chanting of Vedic mantras by the priests at the temple auditorium.</p>
         </div>
       </div>
 
-      <div class="event-card reveal">
-        <div class="event-icon">🍃</div>
-        <div>
-          <span class="event-time">December 26 · 12:00 PM</span>
-          <h3 class="event-name">Kalyana Sadhya</h3>
-          <p class="event-desc">Traditional 28-item Kerala vegetarian feast served on fresh banana leaves. A feast
-            celebrating the joy of the occasion.</p>
+      <div class="event-card event-card--featured reveal">
+        <div class="event-card-banner">
+          <img
+            src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785923629/jpeg-optimizer_Gemini_Generated_Image_nvmc2vnvmc2vnvmc_x203ly.png"
+            alt="Grand Evening Reception — Anandu &amp; Meera" loading="lazy">
         </div>
-      </div>
-
-      <div class="event-card reveal">
-        <div class="event-icon">✨</div>
         <div>
-          <span class="event-time">December 26 · 6:30 PM</span>
-          <h3 class="event-name">Grand Evening Reception</h3>
+          <span class="event-time">August 30 · 6:00 PM onwards</span>
+          <h3 class="event-name">Evening Reception</h3>
           <p class="event-desc">Elegant evening reception with family, friends and dinner banquet. Celebrate the newly
-            wed couple with music and joy.</p>
+            wed couple with music and joy at Rotary Club, Iringole, Perumbavoor.</p>
         </div>
       </div>
 
@@ -302,20 +272,62 @@
     </div>
 
     <div class="gallery-grid reveal">
+      <!-- Row 1: 3 equal -->
       <div class="gallery-item" onclick="openLB(0)">
-        <img src="/anandu_and_meera/assets/images/_ (2).jpeg" alt="Couple at beach — joyful dance">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918014/jpeg-optimizer_SAI01532_eaehn8.jpg"
+          alt="Couple moment 1" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLB(1)">
-        <img src="/anandu_and_meera/assets/images/_ (3).jpeg" alt="Couple running together">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01502_zqonkl.jpg"
+          alt="Couple moment 2" loading="lazy">
       </div>
-      <div class="gallery-item" onclick="openLB(2)" style="grid-column:span 2">
-        <img src="/anandu_and_meera/assets/images/_ (4).jpeg" alt="Romantic hand-hold moment">
+      <div class="gallery-item" onclick="openLB(2)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01491_pvkcfu.jpg"
+          alt="Couple moment 3" loading="lazy">
       </div>
-      <div class="gallery-item" onclick="openLB(3)">
-        <img src="/anandu_and_meera/assets/images/_ (5).jpeg" alt="Couple arms wide open">
+      <!-- Row 2: wide + narrow -->
+      <div class="gallery-item gallery-wide" onclick="openLB(3)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01442_gqqdk4.jpg"
+          alt="Couple moment 4" loading="lazy">
       </div>
       <div class="gallery-item" onclick="openLB(4)">
-        <img src="/anandu_and_meera/assets/images/_ (6).jpeg" alt="Couple reaching for each other">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918003/jpeg-optimizer_SAI01809_xfhgtz.jpg"
+          alt="Couple moment 5" loading="lazy">
+      </div>
+      <!-- Row 3: 3 equal -->
+      <div class="gallery-item" onclick="openLB(5)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918003/jpeg-optimizer_SAI01771_zgj23k.jpg"
+          alt="Couple moment 6" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB(6)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01807_twqctd.jpg"
+          alt="Couple moment 7" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB(7)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01744_d52d2w.jpg"
+          alt="Couple moment 8" loading="lazy">
+      </div>
+      <!-- Row 4: narrow + wide -->
+      <div class="gallery-item" onclick="openLB(8)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01747_d4cstg.jpg"
+          alt="Couple moment 9" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-wide" onclick="openLB(9)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01701_kui2sr.jpg"
+          alt="Couple moment 10" loading="lazy">
+      </div>
+      <!-- Row 5: 3 equal -->
+      <div class="gallery-item" onclick="openLB(10)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785928295/jpeg-optimizer_SAI01646_ogp0ew.jpg"
+          alt="Couple moment 11" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB(11)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785928294/jpeg-optimizer_SAI01636_o9eth3.jpg"
+          alt="Couple moment 12" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLB(12)">
+        <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1785917861/jpeg-optimizer_SAI01415_dzip9b.jpg"
+          alt="Couple moment 13" loading="lazy">
       </div>
     </div>
   </section>
@@ -341,21 +353,20 @@
     <div class="venue-cards">
 
       <div class="venue-card reveal">
-        <span class="venue-sub">🕌 Wedding Ceremony</span>
-        <h3 class="venue-name">Sri Krishna Temple Mandapam</h3>
-        <p class="venue-addr">Adjacent to Guruvayur Temple East Nada,<br>Guruvayur, Thrissur District, Kerala – 680101
-        </p>
-        <a class="venue-btn" href="https://maps.google.com?q=Guruvayur+Temple+Mandapam" target="_blank" rel="noopener">
+        <span class="venue-sub">🛕 Wedding Ceremony</span>
+        <h3 class="venue-name">Airapuram Bhagavathy Temple Auditorium</h3>
+        <p class="venue-addr">Airapuram Bhagavathy Kshetram,<br>Airapuram, Ernakulam District, Kerala</p>
+        <a class="venue-btn" href="https://maps.google.com?q=Airapuram+Bhagavathy+Temple+Irinjalakuda" target="_blank"
+          rel="noopener">
           <i class="fas fa-location-arrow"></i> Get Directions
         </a>
       </div>
 
       <div class="venue-card reveal">
         <span class="venue-sub">🎉 Evening Reception</span>
-        <h3 class="venue-name">Royal Pavilion Banquet Hall</h3>
-        <p class="venue-addr">Puzhakkal, Thrissur – Palakkad Highway,<br>Thrissur, Kerala – 680553 · Valet parking
-          available</p>
-        <a class="venue-btn" href="https://maps.google.com?q=Puzhakkal+Thrissur" target="_blank" rel="noopener">
+        <h3 class="venue-name">Rotary Club, Iringole, Perumbavoor</h3>
+        <p class="venue-addr">Rotary Club Auditorium, Iringole,<br>Perumbavoor, Ernakulam District, Kerala</p>
+        <a class="venue-btn" href="https://maps.google.com?q=Rotary+Club+Irinjalakuda" target="_blank" rel="noopener">
           <i class="fas fa-location-arrow"></i> Get Directions
         </a>
       </div>
@@ -390,7 +401,7 @@
   <footer id="footer">
     <p class="footer-names">Anandu &amp; Meera</p>
     <span class="footer-hashtag">#AnanduAndMeeraForever</span>
-    <p class="footer-tag" style="margin-top:1.5rem;">December 26, 2026 · Kerala</p>
+    <p class="footer-tag" style="margin-top:1.5rem;">August 30, 2026 · Kerala</p>
     <p class="footer-tag" style="margin-top:0.3rem;">With love &amp; gratitude</p>
   </footer>
 
@@ -405,7 +416,7 @@
     </div>
   </div>
 
-  <script src="/anandu_and_meera/script.js"></script>
+  <script src="script.js?v=3.4"></script>
 </body>
 
 </html>

@@ -29,7 +29,7 @@ function showUI() {
 /* ── MUSIC ── */
 let musicPlaying = false;
 const audio = document.getElementById('wedding-music');
-audio.volume = 0.3;
+audio.volume = 0.4;
 
 document.getElementById('music-ctrl').addEventListener('click', () => {
   if (musicPlaying) {
@@ -63,7 +63,7 @@ function initTypedName() {
 
 /* ── COUNTDOWN ── */
 function startCountdown() {
-  const target = new Date('2026-12-26T10:30:00+05:30').getTime();
+  const target = new Date('2026-08-30T08:40:00+05:30').getTime();
   const ids = ['cd-days', 'cd-hours', 'cd-mins', 'cd-secs'];
 
   function tick() {
@@ -191,11 +191,19 @@ function initPetalLoop() {
 
 /* ── LIGHTBOX ── */
 const lbImages = [
-  { src: 'assets/images/_ (2).jpeg', alt: 'Joyful beach dance' },
-  { src: 'assets/images/_ (3).jpeg', alt: 'Running together on the shore' },
-  { src: 'assets/images/_ (4).jpeg', alt: 'Romantic hand-hold moment' },
-  { src: 'assets/images/_ (5).jpeg', alt: 'Arms wide open — free spirits' },
-  { src: 'assets/images/_ (6).jpeg', alt: 'Reaching for each other' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918014/jpeg-optimizer_SAI01532_eaehn8.jpg', alt: 'Couple moment 1' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01502_zqonkl.jpg', alt: 'Couple moment 2' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01491_pvkcfu.jpg', alt: 'Couple moment 3' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918013/jpeg-optimizer_SAI01442_gqqdk4.jpg', alt: 'Couple moment 4' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918003/jpeg-optimizer_SAI01809_xfhgtz.jpg', alt: 'Couple moment 5' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918003/jpeg-optimizer_SAI01771_zgj23k.jpg', alt: 'Couple moment 6' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01807_twqctd.jpg', alt: 'Couple moment 7' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01744_d52d2w.jpg', alt: 'Couple moment 8' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01747_d4cstg.jpg', alt: 'Couple moment 9' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785918002/jpeg-optimizer_SAI01701_kui2sr.jpg', alt: 'Couple moment 10' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785928295/jpeg-optimizer_SAI01646_ogp0ew.jpg', alt: 'Couple moment 11' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785928294/jpeg-optimizer_SAI01636_o9eth3.jpg', alt: 'Couple moment 12' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/v1785917861/jpeg-optimizer_SAI01415_dzip9b.jpg', alt: 'Couple moment 13' },
 ];
 let lbIndex = 0;
 
@@ -238,21 +246,19 @@ document.getElementById('lightbox').addEventListener('click', e => {
   if (e.target === document.getElementById('lightbox')) closeLB();
 });
 
-/* ── WISHES (Google Apps Script → Sheet) ── */
+/* ── WISHES (Google Apps Script & Google Sheet Integration) ── */
 const WISHES_KEY = 'am_wedding_wishes_v2';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsrAQDe5OBNtP8akDEifLx9Qfc3Nz2UG5iPiluA3XYm91F-Yu7bu_G7eJS9uQh-F5h/exec';
+const GOOGLE_SHEET_JSON_URL = 'https://docs.google.com/spreadsheets/d/1HmF-tUlMWh0cTu5oqI10N0jPT5FuPw2cnJChlY-qYzE/gviz/tq?tqx=out:json';
 
-// Paste your Google Apps Script Web App URL here (Deploy → Manage deployments → copy URL)
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUsymR8aPF9CrYYVylzTiLmuj9CPFCHJB97SAset0tzUHj5z79Y8PQ9kmuHAxOH-k/exec'; // ← REPLACE WITH YOUR WEB APP URL
-
-// Google Sheet public read endpoint (no auth needed)
-const GOOGLE_SHEET_JSON_URL = 'https://docs.google.com/spreadsheets/d/186ZsAP72kiZRjyMQyzSWLCwBr9X9zvO0Y3rGeaA2sqE/gviz/tq?tqx=out:json';
+let currentWishes = [];
 
 async function loadWishes() {
   const list = document.getElementById('wishes-list');
   list.innerHTML = '<div style="text-align:center;padding:2rem;font-family:Outfit,sans-serif;color:var(--text-mid);opacity:0.8;"><i class="fas fa-spinner fa-spin"></i> Loading blessings...</div>';
 
   try {
-    const res = await fetch(GOOGLE_SHEET_JSON_URL);
+    const res = await fetch(GOOGLE_SHEET_JSON_URL + '&_t=' + Date.now());
     const raw = await res.text();
     const jsonStr = raw.substring(raw.indexOf('{'), raw.lastIndexOf('}') + 1);
     const data = JSON.parse(jsonStr);
@@ -260,23 +266,31 @@ async function loadWishes() {
 
     let sheetWishes = [];
     if (rows.length > 0) {
-      sheetWishes = rows.map(r => ({
-        name: (r.c[0] && r.c[0].v) ? String(r.c[0].v) : 'Anonymous',
-        // col 1 = date (auto-set by Apps Script), col 2 = message
-        time: (r.c[1] && r.c[1].v) ? String(r.c[1].v) : new Date().toLocaleDateString('en-IN'),
-        text: (r.c[2] && r.c[2].v) ? String(r.c[2].v) : ''
-      })).filter(w => w.text.trim()).reverse();
+      sheetWishes = rows.map(r => {
+        const val0 = (r.c[0] && r.c[0].v) ? String(r.c[0].v) : '';
+        const val1 = (r.c[1] && r.c[1].v) ? String(r.c[1].v) : '';
+        const val2 = (r.c[2] && r.c[2].v) ? String(r.c[2].v) : '';
+        const val3 = (r.c[3] && (r.c[3].f || r.c[3].v)) ? String(r.c[3].f || r.c[3].v) : '';
+        
+        return {
+          name: val0 || 'Anonymous',
+          text: val1 || val2 || '',
+          time: val3 || val2 || val1 || new Date().toLocaleDateString('en-IN')
+        };
+      }).filter(w => w.text.trim() && w.name !== 'Name' && w.text !== 'Blessing' && w.text !== 'Message').reverse();
     }
 
-    // Merge local unsynced wishes on top
+    // Merge local unsynced wishes on top for instant feedback
     const localWishes = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
     const unsynced = localWishes.filter(lw =>
       !sheetWishes.some(sw => sw.name === lw.name && sw.text === lw.text)
     );
-    renderWishes([...unsynced, ...sheetWishes]);
+    currentWishes = [...unsynced, ...sheetWishes];
+    renderWishes(currentWishes);
   } catch (err) {
-    console.warn('Sheet fetch failed, showing local only:', err);
-    renderWishes(JSON.parse(localStorage.getItem(WISHES_KEY) || '[]'));
+    console.warn('Google Sheet fetch failed, displaying local blessings:', err);
+    currentWishes = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
+    renderWishes(currentWishes);
   }
 }
 
@@ -293,29 +307,33 @@ async function submitWish() {
   submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sending…';
 
   const date = new Date().toLocaleDateString('en-IN');
-  // local wish uses 'text' for display; Apps Script expects 'message' for the POST
   const newWish = { name, text, time: date };
 
-  // 1. Save to localStorage immediately → instant optimistic display
+  // 1. Save to local state & localStorage for instant display
+  currentWishes.unshift(newWish);
   const local = JSON.parse(localStorage.getItem(WISHES_KEY) || '[]');
   local.unshift(newWish);
   localStorage.setItem(WISHES_KEY, JSON.stringify(local));
-  renderWishes(local);
+  renderWishes(currentWishes);
 
-  // 2. POST to Google Apps Script — send 'message' to match doPost(e) field name
-  if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.trim() !== '') {
+  // 2. Post to Google Apps Script to save row in Google Sheet
+  if (GOOGLE_SCRIPT_URL) {
     try {
-      const formData = new URLSearchParams();
-      formData.append('name', name);
-      formData.append('message', text);
+      const payload = JSON.stringify({
+        name: name,
+        message: text,
+        text: text,
+        time: date
+      });
 
       await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         mode: 'no-cors',
-        body: formData  // URLSearchParams = CORS-safe, no preflight triggered
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: payload
       });
     } catch (err) {
-      console.warn('Apps Script POST failed (will retry on reload):', err);
+      console.warn('Google Sheet POST error:', err);
     }
   }
 
@@ -501,10 +519,10 @@ function initCalendar() {
 
   // Event Details
   const title = "Anandu & Meera's Wedding";
-  const desc = "You are cordially invited to celebrate the sacred union of Anandu & Meera.\n\nMuhurtham: 10:30 AM at Guruvayur Sri Krishna Temple Mandapam.\nFollowed by Kalyana Sadhya.\n\nEvening Reception: 6:30 PM at Royal Pavilion Banquet Hall, Thrissur.";
-  const loc = "Sri Krishna Temple Mandapam, Guruvayur, Thrissur, Kerala";
-  const start = "20261226T050000Z";
-  const end = "20261226T150000Z";
+  const desc = "You are cordially invited to celebrate the sacred union of Anandu & Meera.\n\nMuhurtham: 8:40 AM – 9:20 AM at Airapuram Bhagavathy Temple Auditorium, Irinjalakuda.\n\nEvening Reception: 6:00 PM onwards at Rotary Club, Irinjalakuda.";
+  const loc = "Airapuram Bhagavathy Temple Auditorium, Irinjalakuda, Thrissur, Kerala";
+  const start = "20260830T031000Z";
+  const end = "20260830T163000Z";
 
   // Google Calendar Link
   if (googleBtn) {

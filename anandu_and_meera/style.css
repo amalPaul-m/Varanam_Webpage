@@ -321,6 +321,7 @@ section {
     font-weight: 600;
     background: linear-gradient(135deg, #FF7070, #FF3535);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -386,11 +387,24 @@ section {
    COUNTDOWN SECTION
 ────────────────────────────────────── */
 #countdown {
-    padding: 5rem 1.5rem;
-    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    padding: 6rem 1.5rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://res.cloudinary.com/ukslkqrn/image/upload/v1785927612/jpeg-optimizer_SAI01855_lr5phi.webp');
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
     position: relative;
     z-index: 15;
+    color: #ffffff;
+}
+
+#countdown .section-title {
+    color: #ffffff;
+}
+
+#countdown .section-label {
+    color: #f5e6ca;
 }
 
 .section-label {
@@ -428,8 +442,10 @@ section {
 }
 
 .cd-box {
-    background: var(--cream-2);
-    border: 1px solid var(--sand-dark);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 16px;
     padding: 1.2rem 0.5rem;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -437,7 +453,16 @@ section {
 
 .cd-box:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 30px var(--shadow);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+#countdown .cd-num {
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#countdown .cd-label {
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .cd-num {
@@ -577,6 +602,56 @@ section {
     transform: translateX(4px);
 }
 
+/* ── Featured event card with banner image ── */
+.event-card--featured {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+    grid-template-columns: unset;
+}
+
+.event-card--featured .event-icon {
+    padding: 1.2rem 1.8rem 0;
+}
+
+.event-card--featured > div:last-child {
+    padding: 1.2rem 1.8rem 1.6rem;
+}
+
+.event-card-banner {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+@keyframes imageBreathing {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.10);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.event-card-banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    animation: imageBreathing 16s ease-in-out infinite;
+    transition: transform 0.8s ease;
+}
+
+.event-card--featured:hover .event-card-banner img {
+    animation-play-state: paused;
+    transform: scale(1.08);
+}
+
 .event-icon {
     width: 48px;
     height: 48px;
@@ -624,7 +699,7 @@ section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
-    max-width: 700px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -634,10 +709,16 @@ section {
     border: 1px solid var(--sand-dark);
     cursor: zoom-in;
     transition: transform 0.4s, box-shadow 0.4s;
+    aspect-ratio: 4 / 3;
 }
 
-.gallery-item:first-child {
+.gallery-wide {
     grid-column: span 2;
+}
+
+.gallery-full {
+    grid-column: span 3;
+    aspect-ratio: 16 / 6;
 }
 
 .gallery-item img {
@@ -646,7 +727,6 @@ section {
     object-fit: cover;
     transition: transform 0.6s;
     display: block;
-    min-height: 180px;
 }
 
 .gallery-item:hover img {
@@ -722,16 +802,21 @@ section {
    VENUE
 ────────────────────────────────────── */
 #venue {
-    padding: 5rem 1.5rem;
-    background: linear-gradient(180deg, var(--cream-2) 0%, var(--sand) 100%);
+    padding: 6rem 1.5rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('https://res.cloudinary.com/ukslkqrn/image/upload/v1785927154/jpeg-optimizer_SAI01562_1_bztc2g.jpg');
+    background-attachment: fixed;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 #venue .section-title {
-    color: var(--text-dark);
+    color: #ffffff;
 }
 
 #venue .section-label {
-    color: var(--red-light);
+    color: #f5e6ca;
 }
 
 .venue-cards {
@@ -742,38 +827,43 @@ section {
 }
 
 .venue-card {
-    background: var(--cream);
-    border: 1px solid var(--sand-dark);
+    background: rgba(20, 20, 20, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 1.8rem;
     transition: all 0.4s;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .venue-card:hover {
-    border-color: var(--red);
-    box-shadow: 0 8px 25px var(--shadow);
-    background: var(--cream);
+    background: rgba(250, 246, 233, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transform: translateY(-4px);
 }
 
 .venue-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
-    color: var(--text-dark);
+    color: #ffffff;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .venue-sub {
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--red);
+    color: #f5e6ca;
     margin-bottom: 0.8rem;
     display: block;
 }
 
 .venue-addr {
     font-size: 0.85rem;
-    color: var(--text-mid);
+    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 1rem;
 }
 
@@ -983,31 +1073,37 @@ section {
    FOOTER
 ────────────────────────────────────── */
 #footer {
-    padding: 3rem 1.5rem;
-    background: var(--red);
+    padding: 5rem 1.5rem;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://res.cloudinary.com/ukslkqrn/image/upload/v1785918001/jpeg-optimizer_SAI01669_bmab0u.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     text-align: center;
+    position: relative;
 }
 
 .footer-names {
     font-family: 'Mrs Saint Delafield', cursive;
-    font-size: 2.8rem;
-    color: var(--cream-2);
+    font-size: 3.2rem;
+    color: #ffffff;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .footer-tag {
-    font-size: 9px;
+    font-size: 10px;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .footer-hashtag {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1rem;
-    color: var(--cream);
+    font-size: 1.1rem;
+    color: var(--gold-light, #f5e6ca);
     margin-top: 0.5rem;
     display: block;
+    letter-spacing: 0.1em;
 }
 
 /* ══════════════════════════════════════
@@ -1479,17 +1575,39 @@ section {
         display: none;
     }
 
+    /* Mobile Gallery Layout Refinement */
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
     }
 
-    .gallery-item:first-child {
-        grid-column: span 2;
+    .gallery-grid .gallery-item {
+        grid-column: span 1;
+        aspect-ratio: 4 / 5;
+        border-radius: 14px;
+    }
+
+    /* Rhythm accents for 13 items: hero feature photo at index 1 and index 9 span both columns */
+    .gallery-grid .gallery-item:nth-child(1),
+    .gallery-grid .gallery-item:nth-child(10) {
+        grid-column: span 2 !important;
+        aspect-ratio: 16 / 9;
+        border-radius: 18px;
+    }
+
+    .gallery-item img {
+        min-height: unset;
+        height: 100%;
+        object-fit: cover;
     }
 
     .hero-glow {
         width: 240px;
         height: 240px;
+    }
+
+    #countdown, #venue {
+        background-size: cover;
     }
 }
 
@@ -1519,7 +1637,8 @@ section {
 }
 
 .play-btn-circle i {
-    margin-left: 2px; /* nudge play icon to center visually */
+    margin-left: 2px;
+    /* nudge play icon to center visually */
 }
 
 /* Pulsating Animation */
@@ -1538,6 +1657,7 @@ section {
         transform: scale(1);
         opacity: 0.8;
     }
+
     100% {
         transform: scale(1.4);
         opacity: 0;
@@ -1584,7 +1704,8 @@ section {
 
 .video-modal-content {
     width: 90vw;
-    max-width: 380px; /* target vertical video aspect ratio */
+    max-width: 380px;
+    /* target vertical video aspect ratio */
     aspect-ratio: 9/16;
     background: #000;
     border-radius: 16px;
@@ -1729,7 +1850,7 @@ section {
     opacity: 0;
     transform: scale(0.9) translateY(40px);
     transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dress-card.reveal.in {
@@ -1740,9 +1861,11 @@ section {
 #dress-code .dress-code-grid .dress-card:nth-child(1) {
     transition-delay: 0.1s !important;
 }
+
 #dress-code .dress-code-grid .dress-card:nth-child(2) {
     transition-delay: 0.25s !important;
 }
+
 #dress-code .dress-code-grid .dress-card:nth-child(3) {
     transition-delay: 0.4s !important;
 }
@@ -1756,19 +1879,52 @@ section {
 }
 
 /* Card 1 Swatches */
-#dress-code .dress-code-grid .dress-card:nth-child(1).in .swatch:nth-child(1) { transform: scale(1); transition-delay: 0.5s; }
-#dress-code .dress-code-grid .dress-card:nth-child(1).in .swatch:nth-child(2) { transform: scale(1); transition-delay: 0.6s; }
-#dress-code .dress-code-grid .dress-card:nth-child(1).in .swatch:nth-child(3) { transform: scale(1); transition-delay: 0.7s; }
+#dress-code .dress-code-grid .dress-card:nth-child(1).in .swatch:nth-child(1) {
+    transform: scale(1);
+    transition-delay: 0.5s;
+}
+
+#dress-code .dress-code-grid .dress-card:nth-child(1).in .swatch:nth-child(2) {
+    transform: scale(1);
+    transition-delay: 0.6s;
+}
+
+#dress-code .dress-code-grid .dress-card:nth-child(1).in .swatch:nth-child(3) {
+    transform: scale(1);
+    transition-delay: 0.7s;
+}
 
 /* Card 2 Swatches */
-#dress-code .dress-code-grid .dress-card:nth-child(2).in .swatch:nth-child(1) { transform: scale(1); transition-delay: 0.65s; }
-#dress-code .dress-code-grid .dress-card:nth-child(2).in .swatch:nth-child(2) { transform: scale(1); transition-delay: 0.75s; }
-#dress-code .dress-code-grid .dress-card:nth-child(2).in .swatch:nth-child(3) { transform: scale(1); transition-delay: 0.85s; }
+#dress-code .dress-code-grid .dress-card:nth-child(2).in .swatch:nth-child(1) {
+    transform: scale(1);
+    transition-delay: 0.65s;
+}
+
+#dress-code .dress-code-grid .dress-card:nth-child(2).in .swatch:nth-child(2) {
+    transform: scale(1);
+    transition-delay: 0.75s;
+}
+
+#dress-code .dress-code-grid .dress-card:nth-child(2).in .swatch:nth-child(3) {
+    transform: scale(1);
+    transition-delay: 0.85s;
+}
 
 /* Card 3 Swatches */
-#dress-code .dress-code-grid .dress-card:nth-child(3).in .swatch:nth-child(1) { transform: scale(1); transition-delay: 0.8s; }
-#dress-code .dress-code-grid .dress-card:nth-child(3).in .swatch:nth-child(2) { transform: scale(1); transition-delay: 0.9s; }
-#dress-code .dress-code-grid .dress-card:nth-child(3).in .swatch:nth-child(3) { transform: scale(1); transition-delay: 1.0s; }
+#dress-code .dress-code-grid .dress-card:nth-child(3).in .swatch:nth-child(1) {
+    transform: scale(1);
+    transition-delay: 0.8s;
+}
+
+#dress-code .dress-code-grid .dress-card:nth-child(3).in .swatch:nth-child(2) {
+    transform: scale(1);
+    transition-delay: 0.9s;
+}
+
+#dress-code .dress-code-grid .dress-card:nth-child(3).in .swatch:nth-child(3) {
+    transform: scale(1);
+    transition-delay: 1.0s;
+}
 
 /* ── Toast Notification ── */
 .toast-container {
@@ -1783,7 +1939,7 @@ section {
     font-family: 'Outfit', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 0.05em;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 9999;
     opacity: 0;
     pointer-events: none;
