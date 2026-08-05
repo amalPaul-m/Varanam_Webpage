@@ -271,7 +271,7 @@ async function loadWishes() {
         const val1 = (r.c[1] && r.c[1].v) ? String(r.c[1].v) : '';
         const val2 = (r.c[2] && r.c[2].v) ? String(r.c[2].v) : '';
         const val3 = (r.c[3] && (r.c[3].f || r.c[3].v)) ? String(r.c[3].f || r.c[3].v) : '';
-        
+
         return {
           name: val0 || 'Anonymous',
           text: val1 || val2 || '',
@@ -519,8 +519,8 @@ function initCalendar() {
 
   // Event Details
   const title = "Anandu & Meera's Wedding";
-  const desc = "You are cordially invited to celebrate the sacred union of Anandu & Meera.\n\nMuhurtham: 8:40 AM – 9:20 AM at Airapuram Bhagavathy Temple Auditorium, Irinjalakuda.\n\nEvening Reception: 6:00 PM onwards at Rotary Club, Irinjalakuda.";
-  const loc = "Airapuram Bhagavathy Temple Auditorium, Irinjalakuda, Thrissur, Kerala";
+  const desc = "You are invited to celebrate the union of Anandu & Meera.\n\nMuhurtham: 8:40 AM – 9:20 AM at Airapuram Bhagavathy Temple Auditorium, Airapuram.\n\nEvening Reception: 6:00 PM onwards at Rotary Club, Iringole, Perumbavoor.";
+  const loc = "Airapuram Bhagavathy Temple Auditorium, Airapuram, Ernakulam, Kerala";
   const start = "20260830T031000Z";
   const end = "20260830T163000Z";
 
