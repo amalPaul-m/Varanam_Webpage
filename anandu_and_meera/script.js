@@ -204,29 +204,70 @@ function initReveal() {
   });
 }
 
-/* ── HERO PARALLAX (GPU Hardware Accelerated & RAF Throttled) ── */
+/* ── PARALLAX — Zero Jank Implementation ── */
 function initParallax() {
-  const hero = document.getElementById('hero');
   const video = document.getElementById('hero-video');
-  if (!hero || !video) return;
 
-  let ticking = false;
-  function updateParallax() {
-    const sy = window.scrollY;
-    if (sy <= window.innerHeight) {
-      video.style.transform = `translate3d(0, ${(sy * 0.35).toFixed(2)}px, 0)`;
-    }
-    ticking = false;
+  // Detect iOS or Safari (which break background-attachment: fixed)
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  const needsJSParallax = isIOS || isSafari;
+
+  let countdownBg, venueBg;
+
+  if (needsJSParallax) {
+    // Only on iOS do we replace the native CSS parallax with JS
+    ['countdown', 'venue'].forEach(id => {
+      const section = document.getElementById(id);
+      if (!section) return;
+      
+      const style = window.getComputedStyle(section);
+      const bgImg = style.backgroundImage;
+      
+      if (bgImg && bgImg !== 'none') {
+        const bg = document.createElement('div');
+        bg.className = 'parallax-bg-ios';
+        bg.style.backgroundImage = bgImg;
+        section.style.backgroundImage = 'none';
+        section.insertBefore(bg, section.firstChild);
+      }
+    });
+
+    countdownBg = document.querySelector('#countdown .parallax-bg-ios');
+    venueBg     = document.querySelector('#venue .parallax-bg-ios');
   }
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  }, { passive: true });
+  let lastY = -1;
 
-  updateParallax();
+  function loop() {
+    const sy = window.scrollY || window.pageYOffset;
+
+    if (sy !== lastY) {
+      lastY = sy;
+      const vh = window.innerHeight;
+
+      // 1. BATCH DOM READS (Eliminates Layout Thrashing)
+      const countdownRect = countdownBg ? countdownBg.parentElement.getBoundingClientRect() : null;
+      const venueRect = venueBg ? venueBg.parentElement.getBoundingClientRect() : null;
+
+      // 2. BATCH DOM WRITES
+      if (video && sy <= vh) {
+        video.style.transform = `translate3d(0, ${(sy * 0.35).toFixed(1)}px, 0)`;
+      }
+
+      if (countdownRect && countdownRect.bottom > 0 && countdownRect.top < vh) {
+        countdownBg.style.transform = `translate3d(0, ${Math.round(-countdownRect.top)}px, 0)`;
+      }
+
+      if (venueRect && venueRect.bottom > 0 && venueRect.top < vh) {
+        venueBg.style.transform = `translate3d(0, ${Math.round(-venueRect.top)}px, 0)`;
+      }
+    }
+
+    requestAnimationFrame(loop);
+  }
+
+  requestAnimationFrame(loop);
 }
 
 /* ── MAGNETIC HOVER (Mouse/Desktop only) ── */

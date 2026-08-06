@@ -397,8 +397,30 @@ section {
     background-size: cover;
     text-align: center;
     position: relative;
+    overflow: hidden;
     z-index: 15;
     color: #ffffff;
+}
+
+/* iOS Parallax fallback child */
+.parallax-bg-ios {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    height: 100dvh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    will-change: transform;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#countdown > *:not(.parallax-bg-ios) {
+    position: relative;
+    z-index: 1;
 }
 
 #countdown .section-title {
@@ -813,6 +835,12 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    overflow: hidden;
+}
+
+#venue > *:not(.parallax-bg-ios) {
+    position: relative;
+    z-index: 1;
 }
 
 #venue .section-title {
