@@ -298,18 +298,18 @@ function initMagneticHover() {
 /* ── LIGHTBOX ── */
 const lbImages = [
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918014/jpeg-optimizer_SAI01532_eaehn8.jpg', alt: 'Couple moment 1' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918013/jpeg-optimizer_SAI01502_zqonkl.jpg', alt: 'Couple moment 2' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918013/jpeg-optimizer_SAI01491_pvkcfu.jpg', alt: 'Couple moment 3' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918013/jpeg-optimizer_SAI01442_gqqdk4.jpg', alt: 'Couple moment 4' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1786039709/jpeg-optimizer_WhatsApp_Image_2026-08-05_at_23.41.49_2_grzbaq.jpg', alt: 'Couple moment 2' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1786039719/jpeg-optimizer_WhatsApp_Image_2026-08-05_at_23.41.49_1_e6kqkk.jpg', alt: 'Couple moment 3' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1786039764/jpeg-optimizer_WhatsApp_Image_2026-08-05_at_23.41.51_sdd6ym.jpg', alt: 'Couple moment 4' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918003/jpeg-optimizer_SAI01809_xfhgtz.jpg', alt: 'Couple moment 5' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918003/jpeg-optimizer_SAI01771_zgj23k.jpg', alt: 'Couple moment 6' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01807_twqctd.jpg', alt: 'Couple moment 7' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01744_d52d2w.jpg', alt: 'Couple moment 8' },
+  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1786039691/jpeg-optimizer_WhatsApp_Image_2026-08-05_at_23.41.50_ihnm0a.jpg', alt: 'Couple moment 8' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01747_d4cstg.jpg', alt: 'Couple moment 9' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785918002/jpeg-optimizer_SAI01701_kui2sr.jpg', alt: 'Couple moment 10' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785928295/jpeg-optimizer_SAI01646_ogp0ew.jpg', alt: 'Couple moment 11' },
   { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785928294/jpeg-optimizer_SAI01636_o9eth3.jpg', alt: 'Couple moment 12' },
-  { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785917861/jpeg-optimizer_SAI01415_dzip9b.jpg', alt: 'Couple moment 13' },
+  // { src: 'https://res.cloudinary.com/ukslkqrn/image/upload/f_auto,q_auto,w_1200/v1785917861/jpeg-optimizer_SAI01415_dzip9b.jpg', alt: 'Couple moment 13' },
 ];
 let lbIndex = 0;
 
