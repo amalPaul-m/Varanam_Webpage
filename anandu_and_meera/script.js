@@ -389,7 +389,7 @@ async function loadWishes() {
         return {
           name: val0 || 'Anonymous',
           text: val1 || val2 || '',
-          time: val3 || val2 || val1 || new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
+          time: val3 || val2 || val1 || new Date().toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
         };
       }).filter(w => w.text.trim() && w.name !== 'Name' && w.text !== 'Blessing' && w.text !== 'Message').reverse();
     }
@@ -425,7 +425,7 @@ async function submitWish() {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sending…';
   }
 
-  const date = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+  const date = new Date().toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
   const newWish = { name, text, time: date };
 
   // 1. Save to local state & localStorage for instant display
