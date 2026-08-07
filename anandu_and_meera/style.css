@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
 
 /* ──────────────────────────────────────
    COLOR PALETTE
@@ -283,9 +283,9 @@ section {
     display: none;
 }
 
-/* ── NAMES — Mrs Saint Delafield ── */
+/* ── NAMES — Dancing Script ── */
 .hero-names {
-    font-family: 'Mrs Saint Delafield', cursive;
+    font-family: 'Dancing Script', cursive;
     font-size: clamp(3.2rem, 10vw, 6rem);
     color: var(--cream);
     line-height: 1;
@@ -295,7 +295,7 @@ section {
 }
 
 .hero-amp {
-    font-family: 'Mrs Saint Delafield', cursive;
+    font-family: 'Dancing Script', cursive;
     font-size: clamp(2.2rem, 7vw, 4rem);
     color: var(--cream);
     display: block;
