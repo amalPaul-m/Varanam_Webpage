@@ -418,7 +418,7 @@ section {
     pointer-events: none;
 }
 
-#countdown > *:not(.parallax-bg-ios) {
+#countdown>*:not(.parallax-bg-ios) {
     position: relative;
     z-index: 1;
 }
@@ -838,7 +838,7 @@ section {
     overflow: hidden;
 }
 
-#venue > *:not(.parallax-bg-ios) {
+#venue>*:not(.parallax-bg-ios) {
     position: relative;
     z-index: 1;
 }

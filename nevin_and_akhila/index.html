@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nevin &amp; Laya | Wedding Invitation</title>
+
+  <!-- SEO & Social Meta -->
+  <meta name="description"
+    content="You are cordially invited to celebrate the Holy Matrimony of Nevin & Laya. Join us in our celebration of love.">
+  <meta property="og:title" content="Nevin & Laya | Wedding Invitation">
+  <meta property="og:image" content="assets/images/_ (2).jpeg">
+  <meta name="theme-color" content="#2F3E30">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Mrs+Saint+Delafield&family=Outfit:wght@200;300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- BACKGROUND GRID -->
+  <div class="dot-grid"></div>
+  <div class="flowers-container" id="flowers-container"></div>
+
+  <!-- MUSIC CONTROL -->
+  <audio id="wedding-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-ctrl" class="floating-btn" title="Play Music">
+    <i class="fas fa-music" id="music-icon"></i>
+  </button>
+
+  <!-- BACK TO TOP -->
+  <button id="btn-top" class="floating-btn" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ═══════════════════════════════════
+     SECTION 1: SAVE THE DATE (Hero Section)
+  ════════════════════════════════════ -->
+  <section id="hero" class="hero-section-botanical">
+
+    <!-- Top Botanical Garland Banner -->
+    <div class="garland-container reveal">
+      <svg class="botanical-garland" viewBox="0 0 400 60" fill="none" stroke="currentColor">
+        <path d="M200,30 Q160,25 120,30 Q80,35 40,30" stroke-width="1.2" />
+        <path d="M180,28 Q175,20 182,15 Q188,20 180,28 Z" fill="currentColor" />
+        <path d="M150,29 Q142,22 148,16 Q155,22 150,29 Z" fill="currentColor" />
+        <path d="M120,30 Q115,22 122,17 Q128,22 120,30 Z" fill="currentColor" />
+        <path d="M90,30 Q82,23 88,18 Q95,23 90,30 Z" fill="currentColor" />
+        <path d="M60,30 Q55,23 62,18 Q68,23 60,30 Z" fill="currentColor" />
+        <path d="M165,29 Q170,38 163,42 Q157,38 165,29 Z" fill="currentColor" />
+        <path d="M135,30 Q140,38 133,43 Q127,38 135,30 Z" fill="currentColor" />
+        <path d="M105,30 Q110,38 103,43 Q97,38 105,30 Z" fill="currentColor" />
+        <path d="M75,30 Q80,38 73,43 Q67,38 75,30 Z" fill="currentColor" />
+        <path d="M200,30 Q240,25 280,30 Q320,35 360,30" stroke-width="1.2" />
+        <path d="M220,28 Q225,20 218,15 Q212,20 220,28 Z" fill="currentColor" />
+        <path d="M250,29 Q258,22 252,16 Q245,22 250,29 Z" fill="currentColor" />
+        <path d="M280,30 Q285,22 278,17 Q272,22 280,30 Z" fill="currentColor" />
+        <path d="M310,30 Q318,23 312,18 Q305,23 310,30 Z" fill="currentColor" />
+        <path d="M340,30 Q345,23 338,18 Q332,23 340,30 Z" fill="currentColor" />
+        <path d="M235,29 Q230,38 237,42 Q243,38 235,29 Z" fill="currentColor" />
+        <path d="M265,30 Q260,38 267,43 Q273,38 265,30 Z" fill="currentColor" />
+        <path d="M295,30 Q290,38 297,43 Q303,38 295,30 Z" fill="currentColor" />
+        <path d="M325,30 Q320,38 327,43 Q333,38 325,30 Z" fill="currentColor" />
+        <circle cx="200" cy="30" r="6" fill="currentColor" />
+      </svg>
+    </div>
+
+    <!-- Header Text -->
+    <div class="save-the-date-header reveal">
+      <h2 class="save-title">SAVE <span class="serif-italic">The</span> DATE</h2>
+      <p class="youre-invited">You're Invited!</p>
+    </div>
+
+    <!-- 1. U-Arched Main Hero Photo Carousel -->
+    <div class="u-arch-hero-container reveal">
+      <div class="hero-carousel-slides">
+        <img src="assets/images/_ (2).jpeg" alt="Nevin & Laya portrait 1" class="hero-slide active">
+        <img src="assets/images/_ (3).jpeg" alt="Nevin & Laya portrait 2" class="hero-slide">
+        <img src="assets/images/_ (4).jpeg" alt="Nevin & Laya portrait 3" class="hero-slide">
+        <img src="assets/images/_ (5).jpeg" alt="Nevin & Laya portrait 4" class="hero-slide">
+        <img src="assets/images/_ (6).jpeg" alt="Nevin & Laya portrait 5" class="hero-slide">
+      </div>
+    </div>
+
+    <!-- Modern Typography Countdown Timer -->
+    <div class="botanical-timer-area reveal">
+      <div class="timer-digits">
+        <span id="cd-days">--</span> : <span id="cd-hours">--</span> : <span id="cd-mins">--</span> : <span
+          id="cd-secs">--</span>
+      </div>
+      <div class="timer-labels">
+        <span>DAYS</span>
+        <span>HOURS</span>
+        <span>MINS</span>
+        <span>SECS</span>
+      </div>
+    </div>
+
+    <!-- Add to Calendar Action -->
+    <div class="calendar-action-area reveal">
+      <button onclick="addToCalendar()" class="pill-btn-solid">
+        <i class="far fa-calendar-alt"></i> Add to Calendar
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════
+     SECTION 2: CELEBRATING THE WEDDING
+  ════════════════════════════════════ -->
+  <section id="celebration" class="celebration-section-botanical">
+    <div class="celebration-header text-center reveal">
+      <span class="celebration-eyebrow">CELEBRATING THE WEDDING OF</span>
+      <h1 class="couple-names-script">Nevin &amp; Laya</h1>
+      <div class="celebration-date-line">DECEMBER 26, 2026</div>
+    </div>
+
+    <!-- 2. Full Width Wide Couple Photo -->
+    <div class="wide-couple-photo-container reveal">
+      <img src="assets/images/_ (3).jpeg" alt="Nevin & Laya wedding veil">
+    </div>
+
+    <div class="scriptural-quote-container text-center reveal">
+      <p class="scriptural-quote">"Therefore what God has joined together, let no one separate."</p>
+      <!-- <p class="invitation-details">We invite you to share in our joy as we pledge our love in Christian Holy Matrimony.
+      </p> -->
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     SECTION 8: OUR FAMILIES
+  ════════════════════════════════════ -->
+  <section id="families" class="families-section-botanical">
+    <div class="section-header text-center reveal">
+      <span class="section-label">With Blessings Of</span>
+      <h2 class="section-title">OUR FAMILIES</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="families-grid reveal">
+
+      <!-- Groom Card: Image Left, Content Right -->
+      <div class="family-card family-card--split">
+        <div class="family-card__image">
+          <img src="assets/images/_ (4).jpeg" alt="Nevin">
+        </div>
+        <div class="family-card__content">
+          <h3 class="family-heading">Groom's Family</h3>
+          <div class="family-details">
+            <p class="parent-name">Mr. Rajan &amp; Mrs. Radha</p>
+            <p class="relation">Parents of Nevin</p>
+            <span class="sep">&amp;</span>
+            <p class="parent-name">Mr. Krishnan &amp; Mrs. Saraswathi</p>
+            <p class="relation">Grand Parents</p>
+            <p class="residence">Sreevalsam, Thrissur</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bride Card: Content Left, Image Right -->
+      <div class="family-card family-card--split family-card--reverse">
+        <div class="family-card__image">
+          <img src="assets/images/_ (5).jpeg" alt="Laya">
+        </div>
+        <div class="family-card__content">
+          <h3 class="family-heading">Bride's Family</h3>
+          <div class="family-details">
+            <p class="parent-name">Mr. Harikumar &amp; Mrs. Indira</p>
+            <p class="relation">Parents of Laya</p>
+            <span class="sep">&amp;</span>
+            <p class="parent-name">Mr. Govindan &amp; Mrs. Kamalam</p>
+            <p class="relation">Grand Parents</p>
+            <p class="residence">Aswathy House, Kottayam</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     SECTION 3: TIMELINE
+  ════════════════════════════════════ -->
+  <section id="timeline" class="timeline-section-botanical">
+    <div class="section-header text-center reveal">
+      <span class="section-label">Our Program Schedule</span>
+      <h2 class="section-title">THE CELEBRATION TIMELINE</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Centralized Timeline Layout -->
+    <div class="central-timeline-container reveal">
+      <div class="timeline-vertical-line"></div>
+
+      <!-- Event 1 -->
+      <div class="central-timeline-node">
+        <div class="node-bullet"></div>
+        <div class="node-content">
+          <h3 class="event-title">GUEST ARRIVAL</h3>
+          <p class="event-desc">Assembly of family and guests at the Cathedral entrance.</p>
+          <span class="event-time-stamp">9.30 am</span>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="central-timeline-node">
+        <div class="node-bullet"></div>
+        <div class="node-content">
+          <h3 class="event-title">WEDDING CEREMONY</h3>
+          <p class="event-desc">The Holy Matrimony ceremony and Nuptial Mass at Lourdes Cathedral.</p>
+          <span class="event-time-stamp">10.00 am</span>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="central-timeline-node">
+        <div class="node-bullet"></div>
+        <div class="node-content">
+          <h3 class="event-title">WEDDING LUNCHEON</h3>
+          <p class="event-desc">Celebration, cake cutting, toasts, and grand wedding feast at Lulu Convention Center.
+          </p>
+          <span class="event-time-stamp">12.30 pm onwards</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     SECTION 4: THE VENUE
+  ════════════════════════════════════ -->
+  <section id="venue" class="venue-section-botanical">
+    <div class="section-header text-center reveal">
+      <span class="section-label">Where we marry</span>
+      <h2 class="section-title">THE VENUE</h2>
+      <!-- <p class="venue-cursive-sub">Lourdes Metropolitan Cathedral</p> -->
+      <div class="section-line"></div>
+    </div>
+
+    <!-- Custom Venue card with U-shaped bottom image crop -->
+    <div class="venue-u-card-container reveal" style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:0.75rem;">
+
+      <!-- Card 1: Cathedral -->
+      <div class="venue-u-card">
+        <div class="venue-u-img-wrapper">
+          <img src="assets/images/_ (6).jpeg" alt="Lourdes Cathedral">
+          <a href="https://maps.google.com?q=Lourdes+Metropolitan+Cathedral+Thrissur" target="_blank" rel="noopener"
+            class="venue-overlay-btn">
+            Direction
+          </a>
+        </div>
+        <div class="venue-card-body">
+          <h3 class="venue-card-title">Lourdes Metropolitan Cathedral</h3>
+          <p class="venue-card-address">East Fort, Thrissur, Kerala – 680005</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Lulu Center -->
+      <div class="venue-u-card">
+        <div class="venue-u-img-wrapper">
+          <!-- We can reuse couples portrait image with get directions -->
+          <img src="assets/images/_ (2).jpeg" alt="Lulu Convention Center">
+          <a href="https://maps.google.com?q=Lulu+Convention+Center+Thrissur" target="_blank" rel="noopener"
+            class="venue-overlay-btn">
+            Direction
+          </a>
+        </div>
+        <div class="venue-card-body">
+          <h3 class="venue-card-title">Lulu Convention Center</h3>
+          <p class="venue-card-address">Puzhakkal, Thrissur – Palakkad Highway, Thrissur – 680553</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════
+     SECTION 5: GUEST INFORMATION (Dress Code)
+  ════════════════════════════════════ -->
+  <section id="dresscode" class="dresscode-section-botanical">
+    <div class="section-header text-center reveal">
+      <span class="section-label">Wedding Details</span>
+      <h2 class="section-title">GUEST INFORMATION</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="guest-info-capsules-container reveal">
+
+      <!-- Ladies Attire Capsule -->
+      <div class="attire-capsule">
+        <div class="capsule-img-wrapper">
+          <img src="assets/images/_ (4).jpeg" alt="Ladies Green Attire">
+        </div>
+        <div class="capsule-body">
+          <h3 class="capsule-title">LADIES</h3>
+          <p class="capsule-desc">Long evening gown or sophisticated cocktail dress.</p>
+          <div class="capsule-swatches">
+            <span class="swatch" style="background:#2C3E2D;" title="Deep Forest Green"></span>
+            <span class="swatch" style="background:#8EA4B4;" title="Dusty Denim Blue"></span>
+            <span class="swatch" style="background:#E2DCD0;" title="Soft Champagne"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gentlemen Attire Capsule -->
+      <div class="attire-capsule">
+        <div class="capsule-img-wrapper">
+          <img src="assets/images/_ (5).jpeg" alt="Gentlemen Tuxedo Attire">
+        </div>
+        <div class="capsule-body">
+          <h3 class="capsule-title">GENTLEMEN</h3>
+          <p class="capsule-desc">Formal suit or traditional Barong with black trousers.</p>
+          <div class="capsule-swatches">
+            <span class="swatch" style="background:#1B241C;" title="Dark Olive Black"></span>
+            <span class="swatch" style="background:#FFFFFF; border:1px solid #CCC;" title="Classic White"></span>
+            <span class="swatch" style="background:#A39583;" title="Warm Muted Gray"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Attire description text -->
+    <div class="attire-palette-desc text-center reveal">
+      <span class="label">GUESTS</span>
+      <p class="desc-text">Color Palette: warm neutrals, forest green, dusty rose, soft champagne tones.</p>
+    </div>
+
+    <!-- Registry / Blessings gifts -->
+    <!-- <div class="gift-guide-botanical text-center reveal">
+      <h3 class="gift-title">Blessing &amp; Gifts</h3>
+      <p class="gift-text">"Your presence and prayers are all that we request. But if you desire to give nonetheless, a
+        monetary gift is one we suggest."</p>
+      <button id="show-qr-btn" class="pill-btn-solid">Show UPI QR</button>
+
+      <div id="qr-container" class="qr-container">
+        <div class="qr-box">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=nevinwedding@upi%26pn=NevinAndLaya"
+            alt="UPI QR">
+        </div>
+        <span class="qr-help">Scan via PhonePe, GPay, Paytm or any UPI app</span>
+      </div>
+    </div> -->
+
+  </section>
+
+
+  <!-- ═══════════════════════════════════
+     SECTION 7: PHOTO GALLERY (Preserved Layout)
+  ════════════════════════════════════ -->
+  <section id="gallery" class="gallery-section">
+    <div class="gallery-layout-container">
+
+      <!-- Vertical Sidebar Title -->
+      <!-- <div class="vertical-title-container">
+        <div class="vertical-title">photo gallery</div>
+      </div> -->
+
+      <div class="gallery-main">
+        <!-- Breadcrumbs / Section Indicator -->
+        <!-- <div class="section-breadcrumbs reveal">
+          <span>START</span>
+          <span class="sep">&rsaquo;</span>
+          <span class="active">PHOTOS</span>
+        </div> -->
+
+        <!-- Main Styled Heading -->
+        <div class="gallery-heading-area reveal">
+          <div class="bg-letter">P</div>
+          <div class="cursive-prefix">our</div>
+          <h2 class="main-title">PHOTOS</h2>
+          <p class="sub-title">Our photo gallery</p>
+          <div class="heading-divider"></div>
+        </div>
+
+        <!-- Responsive Black & White Photo Grid -->
+        <div class="gallery-grid reveal">
+          <div class="gallery-item item-vertical" onclick="openLightbox(0)">
+            <img src="assets/images/_ (2).jpeg" alt="Couple laughing together">
+          </div>
+          <div class="gallery-item item-horizontal" onclick="openLightbox(1)">
+            <img src="assets/images/_ (3).jpeg" alt="Couple running together">
+          </div>
+          <div class="gallery-item item-large" onclick="openLightbox(2)">
+            <img src="assets/images/_ (4).jpeg" alt="Romantic hand holding moment">
+          </div>
+          <div class="gallery-item item-square" onclick="openLightbox(3)">
+            <img src="assets/images/_ (5).jpeg" alt="Couple looking at each other">
+          </div>
+          <div class="gallery-item item-vertical" onclick="openLightbox(4)">
+            <img src="assets/images/_ (6).jpeg" alt="Sweet portrait photo">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox-modal" role="dialog" aria-label="Photo Lightbox">
+    <button class="lb-btn lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lb-btn lb-prev" onclick="changeLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+    <div class="lb-img-container">
+      <img id="lb-img" src="" alt="Enlarged view">
+    </div>
+    <button class="lb-btn lb-next" onclick="changeLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
+
+
+  <!-- ═══════════════════════════════════
+     SECTION 6: BLESSINGS & WISHES (Modern Editorial)
+  ════════════════════════════════════ -->
+  <section id="blessings" class="blessings-section-modern">
+
+    <div class="blessings-title-area text-center reveal">
+      <span class="section-label">WISHES</span>
+      <h4 class="blessings-main-title">Your Blessings</h4>
+      <p class="blessings-subtitle">Leave your heartfelt wishes and prayers for Nevin &amp; Laya as they begin their
+        life together.</p>
+    </div>
+
+    <div class="modern-blessings-card reveal">
+      <div class="modern-card-inner">
+        <div class="card-top-icon">
+          <i class="far fa-heart"></i>
+        </div>
+        <h3 class="modern-card-title">Leave a Message</h3>
+        <!-- <p class="modern-card-sub">Your words of love mean the world to us</p> -->
+
+        <div class="blessings-form">
+          <div class="input-group">
+            <input type="text" id="wish-name" placeholder="Your Full Name*" maxlength="50" required>
+          </div>
+          <div class="input-group">
+            <textarea id="wish-text" rows="4" placeholder="Your blessings &amp; wishes for the couple...*"
+              maxlength="300" required></textarea>
+          </div>
+          <button type="button" class="modern-submit-btn" onclick="submitBlessing()">
+            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Send Blessings
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- wishes list board container -->
+    <div class="wishes-board-container reveal">
+      <div class="wishes-board-header">
+        <span class="wishes-board-badge"><i class="fas fa-comments"></i> Community Blessings</span>
+      </div>
+      <div class="wishes-board" id="wishes-board">
+        <!-- populated by script -->
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════
+     FOOTER
+  ════════════════════════════════════ -->
+  <footer class="footer-botanical">
+
+    <!-- Bottom Garland Banner -->
+    <div class="garland-container reveal">
+      <svg class="botanical-garland" viewBox="0 0 400 60" fill="none" stroke="currentColor">
+        <path d="M200,30 Q160,25 120,30 Q80,35 40,30" stroke-width="1.2" />
+        <path d="M180,28 Q175,20 182,15 Q188,20 180,28 Z" fill="currentColor" />
+        <path d="M150,29 Q142,22 148,16 Q155,22 150,29 Z" fill="currentColor" />
+        <path d="M120,30 Q115,22 122,17 Q128,22 120,30 Z" fill="currentColor" />
+        <path d="M90,30 Q82,23 88,18 Q95,23 90,30 Z" fill="currentColor" />
+        <path d="M60,30 Q55,23 62,18 Q68,23 60,30 Z" fill="currentColor" />
+        <path d="M165,29 Q170,38 163,42 Q157,38 165,29 Z" fill="currentColor" />
+        <path d="M135,30 Q140,38 133,43 Q127,38 135,30 Z" fill="currentColor" />
+        <path d="M105,30 Q110,38 103,43 Q97,38 105,30 Z" fill="currentColor" />
+        <path d="M75,30 Q80,38 73,43 Q67,38 75,30 Z" fill="currentColor" />
+        <path d="M200,30 Q240,25 280,30 Q320,35 360,30" stroke-width="1.2" />
+        <path d="M220,28 Q225,20 218,15 Q212,20 220,28 Z" fill="currentColor" />
+        <path d="M250,29 Q258,22 252,16 Q245,22 250,29 Z" fill="currentColor" />
+        <path d="M280,30 Q285,22 278,17 Q272,22 280,30 Z" fill="currentColor" />
+        <path d="M310,30 Q318,23 312,18 Q305,23 310,30 Z" fill="currentColor" />
+        <path d="M340,30 Q345,23 338,18 Q332,23 340,30 Z" fill="currentColor" />
+        <path d="M235,29 Q230,38 237,42 Q243,38 235,29 Z" fill="currentColor" />
+        <path d="M265,30 Q260,38 267,43 Q273,38 265,30 Z" fill="currentColor" />
+        <path d="M295,30 Q290,38 297,43 Q303,38 295,30 Z" fill="currentColor" />
+        <path d="M325,30 Q320,38 327,43 Q333,38 325,30 Z" fill="currentColor" />
+        <circle cx="200" cy="30" r="6" fill="currentColor" />
+      </svg>
+    </div>
+
+    <h1 class="thank-you-title reveal">Thank You</h1>
+    <p class="thank-you-desc reveal">With love and gratitude,<br>we look forward to celebrating this moment together.
+    </p>
+
+    <div class="footer-names-line reveal">
+      <span class="names">Nevin &amp; Laya</span>
+      <span class="hashtag">#NevinAndLayaForever</span>
+      <span class="details">December 26, 2026 &bull; Thrissur, Kerala</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
