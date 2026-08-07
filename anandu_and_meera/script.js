@@ -89,7 +89,7 @@ function initMusicControls() {
           musicPlaying = true;
           const icon = document.getElementById('music-icon');
           if (icon) icon.className = 'fas fa-pause';
-        }).catch(() => {});
+        }).catch(() => { });
       }
     });
   }
@@ -220,10 +220,10 @@ function initParallax() {
     ['countdown', 'venue'].forEach(id => {
       const section = document.getElementById(id);
       if (!section) return;
-      
+
       const style = window.getComputedStyle(section);
       const bgImg = style.backgroundImage;
-      
+
       if (bgImg && bgImg !== 'none') {
         const bg = document.createElement('div');
         bg.className = 'parallax-bg-ios';
@@ -234,7 +234,7 @@ function initParallax() {
     });
 
     countdownBg = document.querySelector('#countdown .parallax-bg-ios');
-    venueBg     = document.querySelector('#venue .parallax-bg-ios');
+    venueBg = document.querySelector('#venue .parallax-bg-ios');
   }
 
   let lastY = -1;
