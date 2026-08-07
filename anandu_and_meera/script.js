@@ -386,10 +386,21 @@ async function loadWishes() {
         const val2 = (r.c[2] && r.c[2].v) ? String(r.c[2].v) : '';
         const val3 = (r.c[3] && (r.c[3].f || r.c[3].v)) ? String(r.c[3].f || r.c[3].v) : '';
 
+        let timeRaw = val3 || val2 || val1 || '';
+        let timeFormatted = timeRaw;
+        if (timeRaw) {
+          let d = new Date(timeRaw);
+          if (!isNaN(d.getTime())) {
+            timeFormatted = d.toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+          }
+        } else {
+          timeFormatted = new Date().toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+
         return {
           name: val0 || 'Anonymous',
           text: val1 || val2 || '',
-          time: val3 || val2 || val1 || new Date().toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true })
+          time: timeFormatted
         };
       }).filter(w => w.text.trim() && w.name !== 'Name' && w.text !== 'Blessing' && w.text !== 'Message').reverse();
     }
