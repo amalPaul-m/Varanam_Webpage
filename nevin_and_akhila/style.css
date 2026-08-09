@@ -12,7 +12,8 @@
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Outfit', sans-serif;
   --font-script: 'Mrs Saint Delafield', cursive;
-  --font-handwriting: 'Caveat', cursive;
+  --font-handwriting: 'Great Vibes', cursive;
+  --font-couple-names: 'Caveat', cursive;
   --transition: all 0.45s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -333,7 +334,7 @@ body {
 }
 
 .celebration-header .couple-names-script {
-  font-family: var(--font-handwriting);
+  font-family: var(--font-couple-names);
   font-size: clamp(3.2rem, 10vw, 4.8rem);
   color: var(--text-primary);
   margin: 0.6rem 0 1.2rem;
@@ -1468,7 +1469,7 @@ body {
 }
 
 .footer-names-line .names {
-  font-family: var(--font-serif);
+  font-family: var(--font-couple-names);
   font-size: 1.3rem;
   letter-spacing: 0.08em;
 }
