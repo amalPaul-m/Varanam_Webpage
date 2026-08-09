@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nevin &amp; Laya | Wedding Invitation</title>
+  <title>Nevin &amp; Akhila | Wedding Invitation</title>
 
   <!-- SEO & Social Meta -->
   <meta name="description"
-    content="You are cordially invited to celebrate the Holy Matrimony of Nevin & Laya. Join us in our celebration of love.">
-  <meta property="og:title" content="Nevin & Laya | Wedding Invitation">
+    content="You are cordially invited to celebrate the Wedding of Nevin & Akhila. Join us in our celebration of love.">
+  <meta property="og:title" content="Nevin & Akhila | Wedding Invitation">
   <meta property="og:image" content="assets/images/_ (2).jpeg">
   <meta name="theme-color" content="#2F3E30">
 
@@ -17,8 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Great+Vibes&family=Mrs+Saint+Delafield&family=Outfit:wght@200;300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Mrs+Saint+Delafield&family=Outfit:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="/nevin_and_akhila/style.css?v=2.0">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -34,7 +35,9 @@
 
   <!-- MUSIC CONTROL -->
   <audio id="wedding-music" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    <source
+      src="https://res.cloudinary.com/ukslkqrn/video/upload/v1786303343/the-rose-instrumental-anirudh-ravichander_65HRWOOX_oeevlz.mp3"
+      type="audio/mpeg">
   </audio>
   <button id="music-ctrl" class="floating-btn" title="Play Music">
     <i class="fas fa-music" id="music-icon"></i>
@@ -87,18 +90,20 @@
     <div class="u-arch-hero-container reveal">
       <div class="hero-carousel-slides">
         <img
-          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111513/jpeg-optimizer_SaveClip.App_764881510_18112360147964304_6998368901861530816_n_yvn5ux.jpg"
-          alt="Nevin & Laya portrait 1" class="hero-slide active">
+          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296707/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_18.06.06_1_sea0cw.jpg"
+          alt="Nevin & Akhila portrait 1" class="hero-slide active">
         <img
-          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111515/jpeg-optimizer_SaveClip.App_767223605_18112359313964304_8106741024530621039_n_nxn9xa.jpg"
-          alt="Nevin & Laya portrait 2" class="hero-slide">
+          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296707/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_18.06.05_mf7ffo.jpg"
+          alt="Nevin & Akhila portrait 2" class="hero-slide">
         <img
-          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111517/jpeg-optimizer_SaveClip.App_767772291_18112360156964304_1124988338005410701_n_jayxhl.jpg"
-          alt="Nevin & Laya portrait 3" class="hero-slide">
+          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296705/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_18.06.05_1_i4izap.jpg"
+          alt="Nevin & Akhila portrait 3" class="hero-slide">
         <img
-          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111514/jpeg-optimizer_SaveClip.App_767070383_18112359331964304_139602427266976313_n_odiy8r.jpg"
-          alt="Nevin & Laya portrait 4" class="hero-slide">
-        <!-- <img src="assets/images/_ (6).jpeg" alt="Nevin & Laya portrait 5" class="hero-slide"> -->
+          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296705/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_18.06.06_yf5kql.jpg"
+          alt="Nevin & Akhila portrait 4" class="hero-slide">
+        <img
+          src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296701/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_18.00.09_1_cfeybb.jpg"
+          alt="Nevin & Akhila portrait 5" class="hero-slide">
       </div>
     </div>
 
@@ -118,9 +123,20 @@
 
     <!-- Add to Calendar Action -->
     <div class="calendar-action-area reveal">
-      <button onclick="addToCalendar()" class="pill-btn-solid">
-        <i class="far fa-calendar-alt"></i> Add to Calendar
-      </button>
+      <div class="dropdown" id="calendarDropdownWrap">
+        <button onclick="toggleDropdown(event)" class="pill-btn-solid dropdown-toggle">
+          <i class="far fa-calendar-alt"></i> Add to Calendar <i class="fas fa-chevron-down"
+            style="font-size:0.6rem; margin-left: 4px;"></i>
+        </button>
+        <div class="dropdown-menu" id="calendarDropdown">
+          <button onclick="addToCalendar()" class="dropdown-item">
+            <i class="fab fa-google"></i> Google Calendar
+          </button>
+          <button onclick="addAppleCalendar()" class="dropdown-item">
+            <i class="fab fa-apple"></i> Apple Calendar
+          </button>
+        </div>
+      </div>
     </div>
 
   </section>
@@ -132,20 +148,19 @@
     <div class="celebration-header text-center reveal">
       <span class="celebration-eyebrow">CELEBRATING THE WEDDING OF</span>
       <h1 class="couple-names-script">Nevin &amp; Akhila</h1>
-      <div class="celebration-date-line">DECEMBER 26, 2026</div>
+      <div class="celebration-date-line">AUGUST 17, 2026</div>
     </div>
 
     <!-- 2. Full Width Wide Couple Photo -->
     <div class="wide-couple-photo-container reveal">
       <img
-        src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111515/jpeg-optimizer_this_chapter_of_my_life_is_called_Happiness_...._wedding_photography_couplegoals_love_prew_8_zmcv7a.jpg"
-        alt="Nevin & Akhila">
+        src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786298731/WhatsApp_Image_2026-08-09_at_23.34.36_ufh5ok.jpg"
+        alt="Nevin & Akhila wedding veil">
     </div>
 
     <div class="scriptural-quote-container text-center reveal">
-      <p class="scriptural-quote">"Therefore what God has joined together, let no one separate."</p>
-      <!-- <p class="invitation-details">We invite you to share in our joy as we pledge our love in Christian Holy Matrimony.
-      </p> -->
+      <p class="scriptural-quote">"Let love and faithfulness never leave you; bind them around your neck, write them on
+        the tablet of your heart." <br><br>(Proverbs 3:3-4)</p>
     </div>
   </section>
 
@@ -164,17 +179,16 @@
       <!-- Groom Card: Image Left, Content Right -->
       <div class="family-card family-card--split">
         <div class="family-card__image">
-          <img src="assets/images/_ (4).jpeg" alt="Nevin">
+          <img
+            src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786298016/WhatsApp_Image_2026-08-09_at_23.21.47_vgpljh.jpg"
+            alt="Nevin">
         </div>
         <div class="family-card__content">
           <h3 class="family-heading">Groom's Family</h3>
           <div class="family-details">
-            <p class="parent-name">Mr. Rajan &amp; Mrs. Radha</p>
+            <p class="parent-name">Mr. K.J Paulson &amp; Mrs. Mary Paulson</p>
             <p class="relation">Parents of Nevin</p>
-            <span class="sep">&amp;</span>
-            <p class="parent-name">Mr. Krishnan &amp; Mrs. Saraswathi</p>
-            <p class="relation">Grand Parents</p>
-            <p class="residence">Sreevalsam, Thrissur</p>
+            <p class="residence">Kachappilly House, Kuttipuzha, Kunnukara</p>
           </div>
         </div>
       </div>
@@ -182,17 +196,16 @@
       <!-- Bride Card: Content Left, Image Right -->
       <div class="family-card family-card--split family-card--reverse">
         <div class="family-card__image">
-          <img src="assets/images/_ (5).jpeg" alt="Laya">
+          <img
+            src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786298016/WhatsApp_Image_2026-08-09_at_23.23.12_nwf2cq.jpg"
+            alt="Akhila">
         </div>
         <div class="family-card__content">
           <h3 class="family-heading">Bride's Family</h3>
           <div class="family-details">
-            <p class="parent-name">Mr. Harikumar &amp; Mrs. Indira</p>
-            <p class="relation">Parents of Laya</p>
-            <span class="sep">&amp;</span>
-            <p class="parent-name">Mr. Govindan &amp; Mrs. Kamalam</p>
-            <p class="relation">Grand Parents</p>
-            <p class="residence">Aswathy House, Kottayam</p>
+            <p class="parent-name">Mr. George K.A &amp; Mrs. Bindhu George</p>
+            <p class="relation">Parents of Akhila</p>
+            <p class="residence">Kunnathoor House, Valluvally, Koonammavu</p>
           </div>
         </div>
       </div>
@@ -218,9 +231,9 @@
       <div class="central-timeline-node">
         <div class="node-bullet"></div>
         <div class="node-content">
-          <h3 class="event-title">GUEST ARRIVAL</h3>
-          <p class="event-desc">Assembly of family and guests at the Cathedral entrance.</p>
-          <span class="event-time-stamp">9.30 am</span>
+          <h3 class="event-title">WEDDING CEREMONY</h3>
+          <p class="event-desc">St. Sebastian's Church, Kuttipuzha</p>
+          <span class="event-time-stamp">10.30 am</span>
         </div>
       </div>
 
@@ -228,20 +241,9 @@
       <div class="central-timeline-node">
         <div class="node-bullet"></div>
         <div class="node-content">
-          <h3 class="event-title">WEDDING CEREMONY</h3>
-          <p class="event-desc">The Holy Matrimony ceremony and Nuptial Mass at Lourdes Cathedral.</p>
-          <span class="event-time-stamp">10.00 am</span>
-        </div>
-      </div>
-
-      <!-- Event 3 -->
-      <div class="central-timeline-node">
-        <div class="node-bullet"></div>
-        <div class="node-content">
           <h3 class="event-title">WEDDING LUNCHEON</h3>
-          <p class="event-desc">Celebration, cake cutting, toasts, and grand wedding feast at Lulu Convention Center.
-          </p>
-          <span class="event-time-stamp">12.30 pm onwards</span>
+          <p class="event-desc">North Kuthiathode Town Hall</p>
+          <span class="event-time-stamp">Followed by lunch</span>
         </div>
       </div>
     </div>
@@ -259,20 +261,21 @@
     </div>
 
     <!-- Custom Venue card with U-shaped bottom image crop -->
-    <div class="venue-u-card-container reveal" style="display:flex;flex-direction:row;flex-wrap:nowrap;gap:0.75rem;">
+    <div class="venue-u-card-container reveal">
 
       <!-- Card 1: Cathedral -->
       <div class="venue-u-card">
         <div class="venue-u-img-wrapper">
-          <img src="assets/images/_ (6).jpeg" alt="Lourdes Cathedral">
-          <a href="https://maps.google.com?q=Lourdes+Metropolitan+Cathedral+Thrissur" target="_blank" rel="noopener"
+          <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786300843/__9_qdvpjp.jpg"
+            alt="St. Sebastian's Church">
+          <a href="https://maps.google.com?q=St.+Sebastian's+Church+Kuttipuzha" target="_blank" rel="noopener"
             class="venue-overlay-btn">
-            Direction
+            Direction <i class="fas fa-arrow-right" style="margin-left: 4px; font-size: 0.9em;"></i>
           </a>
         </div>
         <div class="venue-card-body">
-          <h3 class="venue-card-title">Lourdes Metropolitan Cathedral</h3>
-          <p class="venue-card-address">East Fort, Thrissur, Kerala – 680005</p>
+          <h3 class="venue-card-title">St. Sebastian's Church</h3>
+          <p class="venue-card-address">Kuttipuzha, Kunnukara P.O</p>
         </div>
       </div>
 
@@ -280,15 +283,16 @@
       <div class="venue-u-card">
         <div class="venue-u-img-wrapper">
           <!-- We can reuse couples portrait image with get directions -->
-          <img src="assets/images/_ (2).jpeg" alt="Lulu Convention Center">
-          <a href="https://maps.google.com?q=Lulu+Convention+Center+Thrissur" target="_blank" rel="noopener"
+          <img src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786300844/__10_jcnafl.jpg"
+            alt="North Kuthiathode Town Hall">
+          <a href="https://maps.google.com?q=North+Kuthiathode+Town+Hall" target="_blank" rel="noopener"
             class="venue-overlay-btn">
-            Direction
+            Direction <i class="fas fa-arrow-right" style="margin-left: 4px; font-size: 0.9em;"></i>
           </a>
         </div>
         <div class="venue-card-body">
-          <h3 class="venue-card-title">Lulu Convention Center</h3>
-          <p class="venue-card-address">Puzhakkal, Thrissur – Palakkad Highway, Thrissur – 680553</p>
+          <h3 class="venue-card-title">North Kuthiathode Town Hall</h3>
+          <p class="venue-card-address">North Kuthiathode</p>
         </div>
       </div>
 
@@ -298,7 +302,7 @@
   <!-- ═══════════════════════════════════
      SECTION 5: GUEST INFORMATION (Dress Code)
   ════════════════════════════════════ -->
-  <section id="dresscode" class="dresscode-section-botanical">
+  <!-- <section id="dresscode" class="dresscode-section-botanical">
     <div class="section-header text-center reveal">
       <span class="section-label">Wedding Details</span>
       <h2 class="section-title">GUEST INFORMATION</h2>
@@ -307,7 +311,7 @@
 
     <div class="guest-info-capsules-container reveal">
 
-      <!-- Ladies Attire Capsule -->
+      
       <div class="attire-capsule">
         <div class="capsule-img-wrapper">
           <img src="assets/images/_ (4).jpeg" alt="Ladies Green Attire">
@@ -323,7 +327,6 @@
         </div>
       </div>
 
-      <!-- Gentlemen Attire Capsule -->
       <div class="attire-capsule">
         <div class="capsule-img-wrapper">
           <img src="assets/images/_ (5).jpeg" alt="Gentlemen Tuxedo Attire">
@@ -341,30 +344,15 @@
 
     </div>
 
-    <!-- Attire description text -->
+ 
     <div class="attire-palette-desc text-center reveal">
       <span class="label">GUESTS</span>
       <p class="desc-text">Color Palette: warm neutrals, forest green, dusty rose, soft champagne tones.</p>
     </div>
 
-    <!-- Registry / Blessings gifts -->
-    <!-- <div class="gift-guide-botanical text-center reveal">
-      <h3 class="gift-title">Blessing &amp; Gifts</h3>
-      <p class="gift-text">"Your presence and prayers are all that we request. But if you desire to give nonetheless, a
-        monetary gift is one we suggest."</p>
-      <button id="show-qr-btn" class="pill-btn-solid">Show UPI QR</button>
+  
 
-      <div id="qr-container" class="qr-container">
-        <div class="qr-box">
-          <img
-            src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=nevinwedding@upi%26pn=NevinAndLaya"
-            alt="UPI QR">
-        </div>
-        <span class="qr-help">Scan via PhonePe, GPay, Paytm or any UPI app</span>
-      </div>
-    </div> -->
-
-  </section>
+  </section> -->
 
 
   <!-- ═══════════════════════════════════
@@ -398,19 +386,54 @@
         <!-- Responsive Black & White Photo Grid -->
         <div class="gallery-grid reveal">
           <div class="gallery-item item-vertical" onclick="openLightbox(0)">
-            <img src="assets/images/_ (2).jpeg" alt="Couple laughing together">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111519/jpeg-optimizer_SaveClip.App_769324524_18112359322964304_6511606044836113733_n_zysv7s.jpg"
+              alt="Nevin &amp; Akhila Moment 1">
           </div>
           <div class="gallery-item item-horizontal" onclick="openLightbox(1)">
-            <img src="assets/images/_ (3).jpeg" alt="Couple running together">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111517/jpeg-optimizer_SaveClip.App_767691800_18112360168964304_4750986170777124775_n_skv0a9.jpg"
+              alt="Nevin &amp; Akhila Moment 2">
           </div>
           <div class="gallery-item item-large" onclick="openLightbox(2)">
-            <img src="assets/images/_ (4).jpeg" alt="Romantic hand holding moment">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111517/jpeg-optimizer_this_chapter_of_my_life_is_called_Happiness_...._wedding_photography_couplegoals_love_prew_2_sif5zy.jpg"
+              alt="Nevin &amp; Akhila Moment 3">
           </div>
           <div class="gallery-item item-square" onclick="openLightbox(3)">
-            <img src="assets/images/_ (5).jpeg" alt="Couple looking at each other">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111517/jpeg-optimizer_SaveClip.App_767772291_18112360156964304_1124988338005410701_n_jayxhl.jpg"
+              alt="Nevin &amp; Akhila Moment 4">
           </div>
           <div class="gallery-item item-vertical" onclick="openLightbox(4)">
-            <img src="assets/images/_ (6).jpeg" alt="Sweet portrait photo">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111515/jpeg-optimizer_SaveClip.App_767223605_18112359313964304_8106741024530621039_n_nxn9xa.jpg"
+              alt="Nevin &amp; Akhila Moment 5">
+          </div>
+          <div class="gallery-item item-horizontal" onclick="openLightbox(5)">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111513/jpeg-optimizer_SaveClip.App_764881510_18112360147964304_6998368901861530816_n_yvn5ux.jpg"
+              alt="Nevin &amp; Akhila Moment 6">
+          </div>
+          <div class="gallery-item item-square" onclick="openLightbox(6)">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786111512/jpeg-optimizer_SaveClip.App_765603143_18112359259964304_3594442750063705699_n_zxcgor.jpg"
+              alt="Nevin &amp; Akhila Moment 7">
+          </div>
+          <div class="gallery-item item-large" onclick="openLightbox(7)">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296703/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_17.55.33_fj1jsc.jpg"
+              alt="Nevin &amp; Akhila Moment 8">
+          </div>
+          <div class="gallery-item item-vertical" onclick="openLightbox(8)">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296703/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_17.55.35_ky6cfh.jpg"
+              alt="Nevin &amp; Akhila Moment 9">
+          </div>
+          <div class="gallery-item item-horizontal" onclick="openLightbox(9)">
+            <img
+              src="https://res.cloudinary.com/ukslkqrn/image/upload/v1786296701/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_17.55.28_1_jaim70.jpg"
+              alt="Nevin &amp; Akhila Moment 10">
           </div>
         </div>
       </div>
@@ -437,16 +460,16 @@
     <div class="blessings-title-area text-center reveal">
       <span class="section-label">WISHES</span>
       <h4 class="blessings-main-title">Your Blessings</h4>
-      <p class="blessings-subtitle">Leave your heartfelt wishes and prayers for Nevin &amp; Laya as they begin their
+      <p class="blessings-subtitle">Leave your heartfelt wishes and prayers for Nevin &amp; Akhila as they begin their
         life together.</p>
     </div>
 
     <div class="modern-blessings-card reveal">
       <div class="modern-card-inner">
-        <div class="card-top-icon">
+        <!-- <div class="card-top-icon">
           <i class="far fa-heart"></i>
-        </div>
-        <h3 class="modern-card-title">Leave a Message</h3>
+        </div> -->
+        <!-- <h3 class="modern-card-title">Leave a Message</h3> -->
         <!-- <p class="modern-card-sub">Your words of love mean the world to us</p> -->
 
         <div class="blessings-form">
@@ -514,13 +537,18 @@
     </p>
 
     <div class="footer-names-line reveal">
-      <span class="names">Nevin &amp; Laya</span>
-      <span class="hashtag">#NevinAndLayaForever</span>
-      <span class="details">December 26, 2026 &bull; Thrissur, Kerala</span>
+      <span class="names">Nevin &amp; Akhila</span>
+      <span class="hashtag">#NevinAndAkhilaForever</span>
+      <span class="details">August 17, 2026 &bull; Kuttipuzha</span>
+      <br>
+      <span class="sharing-details" style="font-size: 0.9em; opacity: 0.8; margin-top: 10px; display: block;">
+        Sharing the happiness:<br>
+        Jelvin Paulson and Alvin Paulson<br>
+      </span>
     </div>
   </footer>
 
-  <script src="/nevin_and_akhila/script.js"></script>
+  <script src="/nevin_and_akhila/script.js?v=3.0"></script>
 </body>
 
 </html>

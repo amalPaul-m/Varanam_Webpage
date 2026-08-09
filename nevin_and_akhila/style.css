@@ -186,9 +186,9 @@ body {
   object-fit: cover;
   display: block;
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 1.8s cubic-bezier(0.4, 0, 0.2, 1), transform 8s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: blur(6px);
   transform: scale(1.0);
+  transition: opacity 2.2s cubic-bezier(0.4, 0, 0.2, 1), filter 2.2s cubic-bezier(0.4, 0, 0.2, 1), transform 8s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 15%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
   pointer-events: none;
@@ -197,8 +197,8 @@ body {
 
 .hero-slide.active {
   opacity: 1;
-  visibility: visible;
-  transform: scale(1.05);
+  filter: blur(0px);
+  transform: scale(1.06);
   pointer-events: auto;
   z-index: 2;
 }
@@ -258,6 +258,60 @@ body {
 .pill-btn-solid:hover {
   background-color: var(--accent-olive);
   transform: translateY(-2px);
+}
+
+/* DROPDOWN MENU */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+  background-color: var(--bg-alt);
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(47, 62, 48, 0.12);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  z-index: 100;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown.open .dropdown-menu {
+  display: block;
+  opacity: 1;
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(47, 62, 48, 0.05);
+}
+
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid rgba(47, 62, 48, 0.05);
 }
 
 /* CELEBRATION */
@@ -352,9 +406,23 @@ body {
 /* TIMELINE */
 .timeline-section-botanical {
   padding: 5rem 1.2rem;
-  background-color: var(--bg-color);
+  background-image: linear-gradient(rgba(250, 249, 246, 0.3), rgba(250, 249, 246, 0.3)), url('https://res.cloudinary.com/ukslkqrn/image/upload/v1786296703/jpeg-optimizer_WhatsApp_Image_2026-08-09_at_17.55.34_dogk2u.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
   z-index: 3;
+}
+
+.timeline-section-botanical .section-label,
+.timeline-section-botanical .section-title {
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.timeline-section-botanical .section-line {
+  background-color: #ffffff;
+  opacity: 0.8;
 }
 
 .section-header {
@@ -402,7 +470,7 @@ body {
   top: 0;
   bottom: 0;
   width: 1px;
-  background-color: var(--border-color);
+  background-color: rgba(47, 62, 48, 0.3);
   transform: translateX(-50%);
 }
 
@@ -425,14 +493,16 @@ body {
 }
 
 .node-content {
-  background-color: var(--bg-alt);
-  border: 1px solid var(--border-color);
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   padding: 1.5rem 1.2rem;
-  border-radius: 6px;
+  border-radius: 12px;
   margin-top: 1.2rem;
   display: inline-block;
   width: 90%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .node-content .event-title {
@@ -478,19 +548,27 @@ body {
 }
 
 .venue-u-card-container {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   max-width: 900px;
   margin: 0 auto;
-  align-items: stretch;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .venue-u-card-container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .venue-u-card {
+    flex: 1 1 0;
+  }
 }
 
 .venue-u-card {
-  flex: 1 1 0 !important;
-  width: 0;
-  min-width: 0;
+  width: 100%;
+  max-width: 400px;
   background-color: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -539,10 +617,28 @@ body {
   border-radius: 50px;
   box-shadow: 0 4px 12px rgba(47, 62, 48, 0.2);
   transition: var(--transition);
+  animation: pulseGlow 2.5s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes pulseGlow {
+  0% {
+    transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(47, 62, 48, 0.2), 0 0 0 0 rgba(47, 62, 48, 0.4);
+  }
+  70% {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 8px 16px rgba(47, 62, 48, 0.3), 0 0 0 15px rgba(47, 62, 48, 0);
+  }
+  100% {
+    transform: translateX(-50%);
+    box-shadow: 0 4px 12px rgba(47, 62, 48, 0.2), 0 0 0 0 rgba(47, 62, 48, 0);
+  }
 }
 
 .venue-overlay-btn:hover {
   background-color: var(--accent-olive);
+  animation-play-state: paused;
+  transform: translateX(-50%) scale(1.05);
 }
 
 .venue-card-body {
@@ -1331,9 +1427,12 @@ body {
 
 /* FOOTER */
 .footer-botanical {
-  background-color: var(--text-primary);
+  background-image: linear-gradient(rgba(27, 36, 28, 0.78), rgba(27, 36, 28, 0.88)), url('https://res.cloudinary.com/ukslkqrn/image/upload/v1786111512/jpeg-optimizer_SaveClip.App_764619144_18112360114964304_952630476952960783_n_gbtndm.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   color: #FFFFFF;
-  padding: 5rem 1.5rem;
+  padding: 5.5rem 1.5rem;
   text-align: center;
   position: relative;
   z-index: 3;
@@ -1573,4 +1672,37 @@ body {
   .gallery-main {
     padding-left: 2.5rem;
   }
+}
+
+/* ──────────────────────────────────────────────────────────
+   TOAST NOTIFICATION (Blessings)
+────────────────────────────────────────────────────────── */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text-primary);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: 0 15px 35px rgba(47, 62, 48, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 10000;
+  pointer-events: none;
+  border: 1px solid rgba(47, 62, 48, 0.1);
+  white-space: nowrap;
+}
+
+.toast-container.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  visibility: visible;
 }
