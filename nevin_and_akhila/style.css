@@ -262,6 +262,11 @@ body {
 }
 
 /* DROPDOWN MENU */
+.calendar-action-area {
+  position: relative;
+  z-index: 20;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
