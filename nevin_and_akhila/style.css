@@ -324,7 +324,7 @@ body {
   align-items: center;
 }
 
-.celebration-header .celebration-eyebrow {
+.celebration-eyebrow {
   font-family: var(--font-sans);
   font-size: 0.68rem;
   font-weight: 600;
